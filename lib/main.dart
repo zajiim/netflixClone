@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/main_page/widgets/main_screen_page.dart';
 
 void main() {
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           scaffoldBackgroundColor: kBackgroundColor,
-          primarySwatch: Colors.green,
+          fontFamily: GoogleFonts.cabin().fontFamily,
+          primarySwatch: Colors.blue,
           primaryColor: Colors.white,
           textTheme: const TextTheme(
             bodyText1: TextStyle(color: Colors.white),

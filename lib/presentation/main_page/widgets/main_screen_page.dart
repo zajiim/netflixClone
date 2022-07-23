@@ -7,12 +7,12 @@ import 'package:netflix_bloc/presentation/new&hot/new_&_hot_page.dart';
 import 'package:netflix_bloc/presentation/search/search_page.dart';
 
 class MainScreenPage extends StatelessWidget {
-  const MainScreenPage({Key? key}) : super(key: key);
+  MainScreenPage({Key? key}) : super(key: key);
 
-  final _pages = const [
-    HomeScreen(),
-    NewAndHotScreen(),
-    SearchScreen(),
+  final _pages = [
+    const HomeScreen(),
+    const NewAndHotScreen(),
+    const SearchScreen(),
     DownloadsScreen()
   ];
 
