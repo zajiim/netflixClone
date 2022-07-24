@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/downloads/download_page.dart';
+import 'package:netflix_bloc/presentation/fast_laugh/fast_laugh.dart';
 import 'package:netflix_bloc/presentation/home/home_page.dart';
 import 'package:netflix_bloc/presentation/main_page/widgets/bottom_nav_bar.dart';
 import 'package:netflix_bloc/presentation/new&hot/new_&_hot_page.dart';
@@ -12,6 +13,7 @@ class MainScreenPage extends StatelessWidget {
   final _pages = [
     const HomeScreen(),
     const NewAndHotScreen(),
+    const FastLaughScreen(),
     const SearchScreen(),
     DownloadsScreen()
   ];
