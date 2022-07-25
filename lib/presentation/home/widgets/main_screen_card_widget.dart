@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
+import 'package:netflix_bloc/presentation/home/widgets/side_buttons_widget_homepage.dart';
 
 class MainScreenCard extends StatelessWidget {
   const MainScreenCard({Key? key}) : super(key: key);
@@ -29,9 +30,9 @@ class MainScreenCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SideButtons(icon: Icons.add, title: 'My List'),
+                SideButtonHomePage(icon: Icons.add, title: 'My List'),
                 _playButton(),
-                SideButtons(icon: Icons.info_outline, title: 'Info'),
+                SideButtonHomePage(icon: Icons.info_outline, title: 'Info'),
               ],
             ),
           ),
@@ -63,37 +64,6 @@ class MainScreenCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class SideButtons extends StatelessWidget {
-  IconData icon;
-  String title;
-  SideButtons({
-    required this.icon,
-    required this.title,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(
-          icon,
-          size: 35,
-          color: kWhiteColor,
-        ),
-        Text(
-          title,
-          style: const TextStyle(
-            color: kWhiteColor,
-            fontSize: 18,
-            fontWeight: FontWeight.w800,
-          ),
-        )
-      ],
     );
   }
 }
