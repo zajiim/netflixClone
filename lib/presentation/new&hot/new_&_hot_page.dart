@@ -63,7 +63,7 @@ class NewAndHotScreen extends StatelessWidget {
                   ]),
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               ComingSoonWidget(),
               EveryonesWatchingWidget()

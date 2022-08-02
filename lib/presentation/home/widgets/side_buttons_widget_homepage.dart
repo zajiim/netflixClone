@@ -16,7 +16,7 @@ class SideButtonHomePage extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: 35,
+          size: 30,
           color: kWhiteColor,
         ),
         Text(

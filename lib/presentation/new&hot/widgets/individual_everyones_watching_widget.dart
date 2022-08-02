@@ -14,7 +14,7 @@ class IndividualEveryonesWatching extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-       const Text(
+        const Text(
           'The Wolf of Wall Street',
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
         ),
@@ -63,18 +63,20 @@ class IndividualEveryonesWatching extends StatelessWidget {
               'The Wolf of Wall Street',
               style: TextStyle(fontSize: 21, fontWeight: FontWeight.w700),
             ),
-            Row(
-              children: [
-                SideButtonHomePage(icon: Icons.send, title: 'Share'),
-                const SizedBox(
-                  width: 10,
-                ),
-                SideButtonHomePage(icon: Icons.add, title: 'My List'),
-                const SizedBox(
-                  width: 10,
-                ),
-                SideButtonHomePage(icon: Icons.play_arrow, title: 'Play')
-              ],
+            Expanded(
+              child: Row(
+                children: [
+                  SideButtonHomePage(icon: Icons.send, title: 'Share'),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  SideButtonHomePage(icon: Icons.add, title: 'My List'),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  SideButtonHomePage(icon: Icons.play_arrow, title: 'Play')
+                ],
+              ),
             ),
           ],
         ),
