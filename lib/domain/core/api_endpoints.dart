@@ -3,4 +3,5 @@ import 'package:netflix_bloc/core/constants/credentials.dart';
 
 class ApiEndPoints {
   static const downloads = '$baseUrl/trending/all/day?api_key=$apiKey';
+  static const search = '$baseUrl/tv?api_key=$apiKey';
 }

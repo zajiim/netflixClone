@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 
-
-
 class SmartDownloads extends StatelessWidget {
   const SmartDownloads({
     Key? key,

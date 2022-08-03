@@ -1,15 +1,14 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_bloc/core/failures/main_failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:netflix_bloc/domain/downloads/core/api_endpoints.dart';
-import 'package:netflix_bloc/domain/downloads/downloads_repo.dart';
+import 'package:netflix_bloc/domain/core/api_endpoints.dart';
+
+import 'package:netflix_bloc/domain/downloads/downloads_service.dart';
 import 'package:netflix_bloc/domain/downloads/models/downloads.dart';
 
-@LazySingleton(as: DownloadsRepo)
-class DownloadsRepostory implements DownloadsRepo {
+@LazySingleton(as: DownloadsService)
+class DownloadsRepostory implements DownloadsService {
   @override
   Future<Either<MainFailures, List<Downloads>>> getDownloadsImages() async {
     try {
@@ -20,7 +19,6 @@ class DownloadsRepostory implements DownloadsRepo {
         downloadsList = (response.data['results'] as List)
             .map((items) => Downloads.fromJson(items))
             .toList();
-        
 
         return Right(downloadsList);
       } else {
