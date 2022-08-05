@@ -10,7 +10,7 @@ class DownloadsScreen extends StatelessWidget {
 
   final _widgetList = [
     const SmartDownloads(),
-    MiddleSection(),
+    const MiddleSection(),
     const ButtonSection()
   ];
   @override

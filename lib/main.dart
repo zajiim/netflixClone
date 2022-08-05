@@ -11,9 +11,9 @@ import 'package:netflix_bloc/domain/core/dependency_injection/injectable.dart';
 import 'package:netflix_bloc/presentation/main_page/widgets/main_screen_page.dart';
 
 Future<void> main() async {
-  HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection();
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 

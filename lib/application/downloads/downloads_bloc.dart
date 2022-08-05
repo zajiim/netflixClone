@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -27,6 +29,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
       );
       final Either<MainFailures, List<Downloads>> downloadsOption =
           await _downloadsService.getDownloadsImages();
+      log(downloadsOption.toString());
 
       //folding
       emit(

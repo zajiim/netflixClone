@@ -4,9 +4,10 @@ import 'package:netflix_bloc/application/downloads/downloads_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/core/constants/strings.dart';
 import 'package:netflix_bloc/presentation/downloads/widgets/downloads_image_widget.dart';
+import 'dart:core';
 
 class MiddleSection extends StatelessWidget {
-  MiddleSection({Key? key}) : super(key: key);
+  const MiddleSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,8 @@ class MiddleSection extends StatelessWidget {
       BlocProvider.of<DownloadsBloc>(context)
           .add(const DownloadsEvent.getDownloadsImages());
     });
+    // BlocProvider.of<DownloadsBloc>(context)
+    //     .add(const DownloadsEvent.getDownloadsImages());
 
     final screenWidth = MediaQuery.of(context).size;
 
@@ -52,7 +55,7 @@ class MiddleSection extends StatelessWidget {
                         ),
                         DownloadsImageWidget(
                           imageList:
-                              '$imageAppendUrl${state.downloads![0].posterPath}',
+                              '$imageAppendUrl${state.downloads[0].posterPath}',
                           margin: const EdgeInsets.only(
                             left: 140.0,
                             bottom: 20,
@@ -65,7 +68,7 @@ class MiddleSection extends StatelessWidget {
                         ),
                         DownloadsImageWidget(
                           imageList:
-                              '$imageAppendUrl${state.downloads![1].posterPath}',
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
                           margin: const EdgeInsets.only(
                             right: 140.0,
                             bottom: 20,
@@ -78,7 +81,7 @@ class MiddleSection extends StatelessWidget {
                         ),
                         DownloadsImageWidget(
                           imageList:
-                              '$imageAppendUrl${state.downloads![2].posterPath}',
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
                           margin: const EdgeInsets.only(
                             top: 20.0,
                           ),

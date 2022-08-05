@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_bloc/application/search/search_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_idle.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_results.dart';
@@ -9,6 +11,10 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<SearchBloc>(context).add(const Initialize());
+    });
+    // BlocProvider.of<SearchBloc>(context).add(const Initialize());
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -31,7 +37,7 @@ class SearchScreen extends StatelessWidget {
                 ),
               ),
               //Expanded(child: SearchIdleWidget()),
-              Expanded(child: SearchResultsWidget()),
+              const Expanded(child: SearchIdleWidget()),
             ],
           ),
         ),

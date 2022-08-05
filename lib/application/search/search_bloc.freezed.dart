@@ -18,33 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() initialize,
+    required TResult Function(String tvShowQuery) searchTvShows,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? initialize,
+    TResult Function(String tvShowQuery)? searchTvShows,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? initialize,
+    TResult Function(String tvShowQuery)? searchTvShows,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(TvShowQuery value) searchTvShows,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Initialize value)? initialize,
+    TResult Function(TvShowQuery value)? searchTvShows,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Initialize value)? initialize,
+    TResult Function(TvShowQuery value)? searchTvShows,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,36 +73,37 @@ class _$SearchEventCopyWithImpl<$Res> implements $SearchEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$InitializeCopyWith<$Res> {
+  factory _$$InitializeCopyWith(
+          _$Initialize value, $Res Function(_$Initialize) then) =
+      __$$InitializeCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, (v) => _then(v as _$_Started));
+class __$$InitializeCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$InitializeCopyWith<$Res> {
+  __$$InitializeCopyWithImpl(
+      _$Initialize _value, $Res Function(_$Initialize) _then)
+      : super(_value, (v) => _then(v as _$Initialize));
 
   @override
-  _$_Started get _value => super._value as _$_Started;
+  _$Initialize get _value => super._value as _$Initialize;
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$Initialize implements Initialize {
+  const _$Initialize();
 
   @override
   String toString() {
-    return 'SearchEvent.started()';
+    return 'SearchEvent.initialize()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$Initialize);
   }
 
   @override
@@ -105,27 +112,30 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() initialize,
+    required TResult Function(String tvShowQuery) searchTvShows,
   }) {
-    return started();
+    return initialize();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? initialize,
+    TResult Function(String tvShowQuery)? searchTvShows,
   }) {
-    return started?.call();
+    return initialize?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? initialize,
+    TResult Function(String tvShowQuery)? searchTvShows,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (initialize != null) {
+      return initialize();
     }
     return orElse();
   }
@@ -133,69 +143,183 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(TvShowQuery value) searchTvShows,
   }) {
-    return started(this);
+    return initialize(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Initialize value)? initialize,
+    TResult Function(TvShowQuery value)? searchTvShows,
   }) {
-    return started?.call(this);
+    return initialize?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Initialize value)? initialize,
+    TResult Function(TvShowQuery value)? searchTvShows,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (initialize != null) {
+      return initialize(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements SearchEvent {
-  const factory _Started() = _$_Started;
+abstract class Initialize implements SearchEvent {
+  const factory Initialize() = _$Initialize;
+}
+
+/// @nodoc
+abstract class _$$TvShowQueryCopyWith<$Res> {
+  factory _$$TvShowQueryCopyWith(
+          _$TvShowQuery value, $Res Function(_$TvShowQuery) then) =
+      __$$TvShowQueryCopyWithImpl<$Res>;
+  $Res call({String tvShowQuery});
+}
+
+/// @nodoc
+class __$$TvShowQueryCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$TvShowQueryCopyWith<$Res> {
+  __$$TvShowQueryCopyWithImpl(
+      _$TvShowQuery _value, $Res Function(_$TvShowQuery) _then)
+      : super(_value, (v) => _then(v as _$TvShowQuery));
+
+  @override
+  _$TvShowQuery get _value => super._value as _$TvShowQuery;
+
+  @override
+  $Res call({
+    Object? tvShowQuery = freezed,
+  }) {
+    return _then(_$TvShowQuery(
+      tvShowQuery: tvShowQuery == freezed
+          ? _value.tvShowQuery
+          : tvShowQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TvShowQuery implements TvShowQuery {
+  const _$TvShowQuery({required this.tvShowQuery});
+
+  @override
+  final String tvShowQuery;
+
+  @override
+  String toString() {
+    return 'SearchEvent.searchTvShows(tvShowQuery: $tvShowQuery)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TvShowQuery &&
+            const DeepCollectionEquality()
+                .equals(other.tvShowQuery, tvShowQuery));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(tvShowQuery));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$TvShowQueryCopyWith<_$TvShowQuery> get copyWith =>
+      __$$TvShowQueryCopyWithImpl<_$TvShowQuery>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String tvShowQuery) searchTvShows,
+  }) {
+    return searchTvShows(tvShowQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String tvShowQuery)? searchTvShows,
+  }) {
+    return searchTvShows?.call(tvShowQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String tvShowQuery)? searchTvShows,
+    required TResult orElse(),
+  }) {
+    if (searchTvShows != null) {
+      return searchTvShows(tvShowQuery);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(TvShowQuery value) searchTvShows,
+  }) {
+    return searchTvShows(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(TvShowQuery value)? searchTvShows,
+  }) {
+    return searchTvShows?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(TvShowQuery value)? searchTvShows,
+    required TResult orElse(),
+  }) {
+    if (searchTvShows != null) {
+      return searchTvShows(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TvShowQuery implements SearchEvent {
+  const factory TvShowQuery({required final String tvShowQuery}) =
+      _$TvShowQuery;
+
+  String get tvShowQuery;
+  @JsonKey(ignore: true)
+  _$$TvShowQueryCopyWith<_$TvShowQuery> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$SearchState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  List<Results> get searchResultList => throw _privateConstructorUsedError;
+  List<Downloads> get idleList => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchStateCopyWith<SearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -204,6 +328,11 @@ abstract class $SearchStateCopyWith<$Res> {
   factory $SearchStateCopyWith(
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res>;
+  $Res call(
+      {List<Results> searchResultList,
+      List<Downloads> idleList,
+      bool isLoading,
+      bool isError});
 }
 
 /// @nodoc
@@ -213,101 +342,165 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   final SearchState _value;
   // ignore: unused_field
   final $Res Function(SearchState) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _$_Initial get _value => super._value as _$_Initial;
+  $Res call({
+    Object? searchResultList = freezed,
+    Object? idleList = freezed,
+    Object? isLoading = freezed,
+    Object? isError = freezed,
+  }) {
+    return _then(_value.copyWith(
+      searchResultList: searchResultList == freezed
+          ? _value.searchResultList
+          : searchResultList // ignore: cast_nullable_to_non_nullable
+              as List<Results>,
+      idleList: idleList == freezed
+          ? _value.idleList
+          : idleList // ignore: cast_nullable_to_non_nullable
+              as List<Downloads>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_SearchStateCopyWith<$Res>
+    implements $SearchStateCopyWith<$Res> {
+  factory _$$_SearchStateCopyWith(
+          _$_SearchState value, $Res Function(_$_SearchState) then) =
+      __$$_SearchStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {List<Results> searchResultList,
+      List<Downloads> idleList,
+      bool isLoading,
+      bool isError});
+}
+
+/// @nodoc
+class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
+    implements _$$_SearchStateCopyWith<$Res> {
+  __$$_SearchStateCopyWithImpl(
+      _$_SearchState _value, $Res Function(_$_SearchState) _then)
+      : super(_value, (v) => _then(v as _$_SearchState));
+
+  @override
+  _$_SearchState get _value => super._value as _$_SearchState;
+
+  @override
+  $Res call({
+    Object? searchResultList = freezed,
+    Object? idleList = freezed,
+    Object? isLoading = freezed,
+    Object? isError = freezed,
+  }) {
+    return _then(_$_SearchState(
+      searchResultList: searchResultList == freezed
+          ? _value._searchResultList
+          : searchResultList // ignore: cast_nullable_to_non_nullable
+              as List<Results>,
+      idleList: idleList == freezed
+          ? _value._idleList
+          : idleList // ignore: cast_nullable_to_non_nullable
+              as List<Downloads>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_SearchState implements _SearchState {
+  const _$_SearchState(
+      {required final List<Results> searchResultList,
+      required final List<Downloads> idleList,
+      required this.isLoading,
+      required this.isError})
+      : _searchResultList = searchResultList,
+        _idleList = idleList;
+
+  final List<Results> _searchResultList;
+  @override
+  List<Results> get searchResultList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchResultList);
+  }
+
+  final List<Downloads> _idleList;
+  @override
+  List<Downloads> get idleList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_idleList);
+  }
+
+  @override
+  final bool isLoading;
+  @override
+  final bool isError;
 
   @override
   String toString() {
-    return 'SearchState.initial()';
+    return 'SearchState(searchResultList: $searchResultList, idleList: $idleList, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_SearchState &&
+            const DeepCollectionEquality()
+                .equals(other._searchResultList, _searchResultList) &&
+            const DeepCollectionEquality().equals(other._idleList, _idleList) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.isError, isError));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_searchResultList),
+      const DeepCollectionEquality().hash(_idleList),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isError));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>
+      __$$_SearchStateCopyWithImpl<_$_SearchState>(this, _$identity);
 }
 
-abstract class _Initial implements SearchState {
-  const factory _Initial() = _$_Initial;
+abstract class _SearchState implements SearchState {
+  const factory _SearchState(
+      {required final List<Results> searchResultList,
+      required final List<Downloads> idleList,
+      required final bool isLoading,
+      required final bool isError}) = _$_SearchState;
+
+  @override
+  List<Results> get searchResultList;
+  @override
+  List<Downloads> get idleList;
+  @override
+  bool get isLoading;
+  @override
+  bool get isError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
