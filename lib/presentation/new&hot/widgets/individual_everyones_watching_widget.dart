@@ -31,6 +31,7 @@ class IndividualEveryonesWatching extends StatelessWidget {
         Stack(
           children: [
             SizedBox(
+              height: 180,
               child: Image.network(
                 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/blbA7NEHARQOWy5i9VF5K2kHrPc.jpg',
                 fit: BoxFit.contain,

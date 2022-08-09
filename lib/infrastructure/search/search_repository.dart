@@ -18,6 +18,7 @@ class SearchRepository implements SearchService {
           await Dio(BaseOptions()).get(ApiEndPoints.search, queryParameters: {
         'query': tvShowQuery,
       });
+      log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         log(response.data.toString());
         final searchResult = Search.fromJson(response.data);
@@ -26,7 +27,8 @@ class SearchRepository implements SearchService {
       } else {
         return const Left(MainFailures.serverFailures());
       }
-    } catch (_) {
+    } catch (e) {
+      print(e.toString());
       return const Left(MainFailures.clientFailures());
     }
   }

@@ -57,7 +57,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               )));
     });
     on<TvShowQuery>((event, emit) async {
-      _searchService.searchTvShows(tvShowQuery: event.tvShowQuery);
+      final _result =
+          await _searchService.searchTvShows(tvShowQuery: event.tvShowQuery);
+      print(_result);
     });
   }
 }

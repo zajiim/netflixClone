@@ -53,43 +53,49 @@ class MiddleSection extends StatelessWidget {
                           backgroundColor: kGreyColor.withOpacity(0.5),
                           radius: screenWidth.width * 0.4,
                         ),
-                        DownloadsImageWidget(
-                          imageList:
-                              '$imageAppendUrl${state.downloads[0].posterPath}',
-                          margin: const EdgeInsets.only(
-                            left: 140.0,
-                            bottom: 20,
-                          ),
-                          angle: 20,
-                          size: Size(
-                            screenWidth.width * 0.4,
-                            screenWidth.width * 0.60,
-                          ),
-                        ),
-                        DownloadsImageWidget(
-                          imageList:
-                              '$imageAppendUrl${state.downloads[1].posterPath}',
-                          margin: const EdgeInsets.only(
-                            right: 140.0,
-                            bottom: 20,
-                          ),
-                          angle: -20,
-                          size: Size(
-                            screenWidth.width * 0.4,
-                            screenWidth.width * 0.60,
-                          ),
-                        ),
-                        DownloadsImageWidget(
-                          imageList:
-                              '$imageAppendUrl${state.downloads[2].posterPath}',
-                          margin: const EdgeInsets.only(
-                            top: 20.0,
-                          ),
-                          size: Size(
-                            screenWidth.width * 0.4,
-                            screenWidth.width * 0.65,
-                          ),
-                        ),
+                        (state.downloads.isNotEmpty)
+                            ? DownloadsImageWidget(
+                                imageList:
+                                    '$imageAppendUrl${state.downloads[0].posterPath}',
+                                margin: const EdgeInsets.only(
+                                  left: 140.0,
+                                  bottom: 20,
+                                ),
+                                angle: 20,
+                                size: Size(
+                                  screenWidth.width * 0.4,
+                                  screenWidth.width * 0.60,
+                                ),
+                              )
+                            : const CircularProgressIndicator(),
+                        (state.downloads.isNotEmpty)
+                            ? DownloadsImageWidget(
+                                imageList:
+                                    '$imageAppendUrl${state.downloads[1].posterPath}',
+                                margin: const EdgeInsets.only(
+                                  right: 140.0,
+                                  bottom: 20,
+                                ),
+                                angle: -20,
+                                size: Size(
+                                  screenWidth.width * 0.4,
+                                  screenWidth.width * 0.60,
+                                ),
+                              )
+                            : const CircularProgressIndicator(),
+                        (state.downloads.isNotEmpty)
+                            ? DownloadsImageWidget(
+                                imageList:
+                                    '$imageAppendUrl${state.downloads[2].posterPath}',
+                                margin: const EdgeInsets.only(
+                                  top: 20.0,
+                                ),
+                                size: Size(
+                                  screenWidth.width * 0.4,
+                                  screenWidth.width * 0.65,
+                                ),
+                              )
+                            : const CircularProgressIndicator(),
                       ],
                     ),
             );

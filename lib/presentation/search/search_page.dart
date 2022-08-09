@@ -35,6 +35,9 @@ class SearchScreen extends StatelessWidget {
                 style: const TextStyle(
                   color: kWhiteColor,
                 ),
+                onChanged: (value) {
+                  BlocProvider.of<SearchBloc>(context).add( TvShowQuery(tvShowQuery: value));
+                },
               ),
               //Expanded(child: SearchIdleWidget()),
               const Expanded(child: SearchIdleWidget()),

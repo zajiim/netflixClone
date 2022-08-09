@@ -18,10 +18,11 @@ class DownloadsRepostory implements DownloadsService {
           await Dio(BaseOptions()).get(ApiEndPoints.downloads);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        final downloadsList = (response.data['results'] as List).map((items) {
+        final downloadsList =
+            (response.data['results'] as List).map((items) {
           return Downloads.fromJson(items);
         }).toList();
-        print(downloadsList.toString());
+       // print(downloadsList.toString());
         return Right(downloadsList);
       } else {
         return const Left(MainFailures.serverFailures());
