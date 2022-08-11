@@ -56,7 +56,7 @@ class MiddleSection extends StatelessWidget {
                         (state.downloads.isNotEmpty)
                             ? DownloadsImageWidget(
                                 imageList:
-                                    '$imageAppendUrl${state.downloads[0].posterPath}',
+                                    '$imageAppendUrl${state.downloads[1].posterPath}',
                                 margin: const EdgeInsets.only(
                                   left: 140.0,
                                   bottom: 20,
@@ -71,7 +71,7 @@ class MiddleSection extends StatelessWidget {
                         (state.downloads.isNotEmpty)
                             ? DownloadsImageWidget(
                                 imageList:
-                                    '$imageAppendUrl${state.downloads[1].posterPath}',
+                                    '$imageAppendUrl${state.downloads[0].posterPath}',
                                 margin: const EdgeInsets.only(
                                   right: 140.0,
                                   bottom: 20,

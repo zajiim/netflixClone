@@ -20,7 +20,7 @@ Search _$SearchFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Search {
-  List<Results> get results => throw _privateConstructorUsedError;
+  List<Result> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ mixin _$Search {
 abstract class $SearchCopyWith<$Res> {
   factory $SearchCopyWith(Search value, $Res Function(Search) then) =
       _$SearchCopyWithImpl<$Res>;
-  $Res call({List<Results> results});
+  $Res call({List<Result> results});
 }
 
 /// @nodoc
@@ -50,7 +50,7 @@ class _$SearchCopyWithImpl<$Res> implements $SearchCopyWith<$Res> {
       results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<Results>,
+              as List<Result>,
     ));
   }
 }
@@ -60,7 +60,7 @@ abstract class _$$_SearchCopyWith<$Res> implements $SearchCopyWith<$Res> {
   factory _$$_SearchCopyWith(_$_Search value, $Res Function(_$_Search) then) =
       __$$_SearchCopyWithImpl<$Res>;
   @override
-  $Res call({List<Results> results});
+  $Res call({List<Result> results});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class __$$_SearchCopyWithImpl<$Res> extends _$SearchCopyWithImpl<$Res>
       results: results == freezed
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<Results>,
+              as List<Result>,
     ));
   }
 }
@@ -88,14 +88,14 @@ class __$$_SearchCopyWithImpl<$Res> extends _$SearchCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Search implements _Search {
-  const _$_Search({required final List<Results> results}) : _results = results;
+  const _$_Search({required final List<Result> results}) : _results = results;
 
   factory _$_Search.fromJson(Map<String, dynamic> json) =>
       _$$_SearchFromJson(json);
 
-  final List<Results> _results;
+  final List<Result> _results;
   @override
-  List<Results> get results {
+  List<Result> get results {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_results);
   }
@@ -132,24 +132,24 @@ class _$_Search implements _Search {
 }
 
 abstract class _Search implements Search {
-  const factory _Search({required final List<Results> results}) = _$_Search;
+  const factory _Search({required final List<Result> results}) = _$_Search;
 
   factory _Search.fromJson(Map<String, dynamic> json) = _$_Search.fromJson;
 
   @override
-  List<Results> get results;
+  List<Result> get results;
   @override
   @JsonKey(ignore: true)
   _$$_SearchCopyWith<_$_Search> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-Results _$ResultsFromJson(Map<String, dynamic> json) {
-  return _Results.fromJson(json);
+Result _$ResultFromJson(Map<String, dynamic> json) {
+  return _Result.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Results {
+mixin _$Result {
   @JsonKey(name: "poster_path")
   String get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
@@ -157,25 +157,25 @@ mixin _$Results {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ResultsCopyWith<Results> get copyWith => throw _privateConstructorUsedError;
+  $ResultCopyWith<Result> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ResultsCopyWith<$Res> {
-  factory $ResultsCopyWith(Results value, $Res Function(Results) then) =
-      _$ResultsCopyWithImpl<$Res>;
+abstract class $ResultCopyWith<$Res> {
+  factory $ResultCopyWith(Result value, $Res Function(Result) then) =
+      _$ResultCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: "poster_path") String posterPath,
       @JsonKey(name: "name") String name});
 }
 
 /// @nodoc
-class _$ResultsCopyWithImpl<$Res> implements $ResultsCopyWith<$Res> {
-  _$ResultsCopyWithImpl(this._value, this._then);
+class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
+  _$ResultCopyWithImpl(this._value, this._then);
 
-  final Results _value;
+  final Result _value;
   // ignore: unused_field
-  final $Res Function(Results) _then;
+  final $Res Function(Result) _then;
 
   @override
   $Res call({
@@ -196,10 +196,9 @@ class _$ResultsCopyWithImpl<$Res> implements $ResultsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_ResultsCopyWith<$Res> implements $ResultsCopyWith<$Res> {
-  factory _$$_ResultsCopyWith(
-          _$_Results value, $Res Function(_$_Results) then) =
-      __$$_ResultsCopyWithImpl<$Res>;
+abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
+  factory _$$_ResultCopyWith(_$_Result value, $Res Function(_$_Result) then) =
+      __$$_ResultCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: "poster_path") String posterPath,
@@ -207,20 +206,20 @@ abstract class _$$_ResultsCopyWith<$Res> implements $ResultsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ResultsCopyWithImpl<$Res> extends _$ResultsCopyWithImpl<$Res>
-    implements _$$_ResultsCopyWith<$Res> {
-  __$$_ResultsCopyWithImpl(_$_Results _value, $Res Function(_$_Results) _then)
-      : super(_value, (v) => _then(v as _$_Results));
+class __$$_ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
+    implements _$$_ResultCopyWith<$Res> {
+  __$$_ResultCopyWithImpl(_$_Result _value, $Res Function(_$_Result) _then)
+      : super(_value, (v) => _then(v as _$_Result));
 
   @override
-  _$_Results get _value => super._value as _$_Results;
+  _$_Result get _value => super._value as _$_Result;
 
   @override
   $Res call({
     Object? posterPath = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_Results(
+    return _then(_$_Result(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
@@ -235,13 +234,13 @@ class __$$_ResultsCopyWithImpl<$Res> extends _$ResultsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Results implements _Results {
-  const _$_Results(
+class _$_Result implements _Result {
+  const _$_Result(
       {@JsonKey(name: "poster_path") required this.posterPath,
       @JsonKey(name: "name") required this.name});
 
-  factory _$_Results.fromJson(Map<String, dynamic> json) =>
-      _$$_ResultsFromJson(json);
+  factory _$_Result.fromJson(Map<String, dynamic> json) =>
+      _$$_ResultFromJson(json);
 
   @override
   @JsonKey(name: "poster_path")
@@ -252,14 +251,14 @@ class _$_Results implements _Results {
 
   @override
   String toString() {
-    return 'Results(posterPath: $posterPath, name: $name)';
+    return 'Result(posterPath: $posterPath, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Results &&
+            other is _$_Result &&
             const DeepCollectionEquality()
                 .equals(other.posterPath, posterPath) &&
             const DeepCollectionEquality().equals(other.name, name));
@@ -274,23 +273,23 @@ class _$_Results implements _Results {
 
   @JsonKey(ignore: true)
   @override
-  _$$_ResultsCopyWith<_$_Results> get copyWith =>
-      __$$_ResultsCopyWithImpl<_$_Results>(this, _$identity);
+  _$$_ResultCopyWith<_$_Result> get copyWith =>
+      __$$_ResultCopyWithImpl<_$_Result>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResultsToJson(
+    return _$$_ResultToJson(
       this,
     );
   }
 }
 
-abstract class _Results implements Results {
-  const factory _Results(
+abstract class _Result implements Result {
+  const factory _Result(
       {@JsonKey(name: "poster_path") required final String posterPath,
-      @JsonKey(name: "name") required final String name}) = _$_Results;
+      @JsonKey(name: "name") required final String name}) = _$_Result;
 
-  factory _Results.fromJson(Map<String, dynamic> json) = _$_Results.fromJson;
+  factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
   @override
   @JsonKey(name: "poster_path")
@@ -300,6 +299,6 @@ abstract class _Results implements Results {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_ResultsCopyWith<_$_Results> get copyWith =>
+  _$$_ResultCopyWith<_$_Result> get copyWith =>
       throw _privateConstructorUsedError;
 }

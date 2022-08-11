@@ -20,15 +20,17 @@ class SearchRepository implements SearchService {
       });
       log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
-        log(response.data.toString());
         final searchResult = Search.fromJson(response.data);
+        // log(searchResult.toString());
 
         return Right(searchResult);
       } else {
         return const Left(MainFailures.serverFailures());
       }
-    } catch (e) {
-      print(e.toString());
+    }
+   
+     catch (e) {
+      log(e.toString());
       return const Left(MainFailures.clientFailures());
     }
   }

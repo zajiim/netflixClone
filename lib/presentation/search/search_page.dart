@@ -36,11 +36,21 @@ class SearchScreen extends StatelessWidget {
                   color: kWhiteColor,
                 ),
                 onChanged: (value) {
-                  BlocProvider.of<SearchBloc>(context).add( TvShowQuery(tvShowQuery: value));
+                  BlocProvider.of<SearchBloc>(context)
+                      .add(TvShowQuery(tvShowQuery: value));
                 },
               ),
-              //Expanded(child: SearchIdleWidget()),
-              const Expanded(child: SearchIdleWidget()),
+
+              Expanded(
+                child: BlocBuilder<SearchBloc, SearchState>(
+                  builder: (context, state) {
+                    return (state.searchResultList.isEmpty)
+                        ? const SearchIdleWidget()
+                        : const SearchResultsWidget();
+                  },
+                ),
+              ),
+              // const Expanded(child: SearchResultsWidget(),),
             ],
           ),
         ),

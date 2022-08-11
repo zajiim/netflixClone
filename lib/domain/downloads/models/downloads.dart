@@ -15,3 +15,4 @@ class Downloads with _$Downloads {
   factory Downloads.fromJson(Map<String, dynamic> json) =>
       _$DownloadsFromJson(json);
 }
+

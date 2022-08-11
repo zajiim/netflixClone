@@ -51,19 +51,19 @@ part 'search.g.dart';
 @freezed
 class Search with _$Search {
   const factory Search({
-    required List<Results> results,
+    required List<Result> results,
   }) = _Search;
 
   factory Search.fromJson(Map<String, dynamic> json) => _$SearchFromJson(json);
 }
 
 @freezed
-class Results with _$Results {
-  const factory Results({
+class Result with _$Result {
+  const factory Result({
     @JsonKey(name: "poster_path") required String posterPath,
     @JsonKey(name: "name") required String name,
-  }) = _Results;
+  }) = _Result;
 
-  factory Results.fromJson(Map<String, dynamic> json) =>
-      _$ResultsFromJson(json);
+  factory Result.fromJson(Map<String, dynamic> json) =>
+      _$ResultFromJson(json);
 }

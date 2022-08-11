@@ -57,9 +57,22 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               )));
     });
     on<TvShowQuery>((event, emit) async {
-      final _result =
+      log("Searching for ${event.tvShowQuery}");
+      final searchResult =
           await _searchService.searchTvShows(tvShowQuery: event.tvShowQuery);
-      print(_result);
+      emit(searchResult.fold(
+          (failure) => state.copyWith(
+                idleList: [],
+                searchResultList: [],
+                isLoading: false,
+                isError: true,
+              ),
+          (Search searchList) => state.copyWith(
+                idleList: [],
+                searchResultList: searchList.results,
+                isLoading: false,
+                isError: false,
+              )));
     });
   }
 }
