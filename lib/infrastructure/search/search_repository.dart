@@ -21,15 +21,16 @@ class SearchRepository implements SearchService {
       log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final searchResult = Search.fromJson(response.data);
-        // log(searchResult.toString());
+        log(searchResult.toString());
 
         return Right(searchResult);
       } else {
         return const Left(MainFailures.serverFailures());
       }
-    }
-   
-     catch (e) {
+    } on DioError catch (e) {
+      log(e.toString());
+      return const Left(MainFailures.clientFailures());
+    } catch (e) {
       log(e.toString());
       return const Left(MainFailures.clientFailures());
     }

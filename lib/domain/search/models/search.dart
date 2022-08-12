@@ -26,6 +26,14 @@
 //   String? name;
 //   @JsonKey(name: "poster_path")
 //   String? posterPath;
+//   @JsonKey(name: "original_title")
+//   String? originalTitle;
+//   @JsonKey(name: "overview")
+//   String? overview;
+//   @JsonKey(name: "release_date")
+//   String? releaseDate;
+//   @JsonKey(name: "vote_average")
+//   String? voting;
 
 //   Result({
 //     this.name,
@@ -60,8 +68,11 @@ class Search with _$Search {
 @freezed
 class Result with _$Result {
   const factory Result({
-    @JsonKey(name: "poster_path") required String posterPath,
-    @JsonKey(name: "name") required String name,
+    @JsonKey(name: "poster_path") required String? posterPath,
+    @JsonKey(name: "name") required String? name,
+    @JsonKey(name: "first_air_date") required String? releaseDate,
+    @JsonKey(name: "vote_average") required double? voteAverage,
+    @JsonKey(name: "overview") required String? overview,
   }) = _Result;
 
   factory Result.fromJson(Map<String, dynamic> json) =>

@@ -151,9 +151,15 @@ Result _$ResultFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Result {
   @JsonKey(name: "poster_path")
-  String get posterPath => throw _privateConstructorUsedError;
+  String? get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "first_air_date")
+  String? get releaseDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "vote_average")
+  double? get voteAverage => throw _privateConstructorUsedError;
+  @JsonKey(name: "overview")
+  String? get overview => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -165,8 +171,11 @@ abstract class $ResultCopyWith<$Res> {
   factory $ResultCopyWith(Result value, $Res Function(Result) then) =
       _$ResultCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: "poster_path") String posterPath,
-      @JsonKey(name: "name") String name});
+      {@JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "first_air_date") String? releaseDate,
+      @JsonKey(name: "vote_average") double? voteAverage,
+      @JsonKey(name: "overview") String? overview});
 }
 
 /// @nodoc
@@ -181,16 +190,31 @@ class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
   $Res call({
     Object? posterPath = freezed,
     Object? name = freezed,
+    Object? releaseDate = freezed,
+    Object? voteAverage = freezed,
+    Object? overview = freezed,
   }) {
     return _then(_value.copyWith(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      releaseDate: releaseDate == freezed
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      voteAverage: voteAverage == freezed
+          ? _value.voteAverage
+          : voteAverage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      overview: overview == freezed
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -201,8 +225,11 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
       __$$_ResultCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: "poster_path") String posterPath,
-      @JsonKey(name: "name") String name});
+      {@JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "first_air_date") String? releaseDate,
+      @JsonKey(name: "vote_average") double? voteAverage,
+      @JsonKey(name: "overview") String? overview});
 }
 
 /// @nodoc
@@ -218,16 +245,31 @@ class __$$_ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
   $Res call({
     Object? posterPath = freezed,
     Object? name = freezed,
+    Object? releaseDate = freezed,
+    Object? voteAverage = freezed,
+    Object? overview = freezed,
   }) {
     return _then(_$_Result(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      releaseDate: releaseDate == freezed
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      voteAverage: voteAverage == freezed
+          ? _value.voteAverage
+          : voteAverage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      overview: overview == freezed
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -237,21 +279,33 @@ class __$$_ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
 class _$_Result implements _Result {
   const _$_Result(
       {@JsonKey(name: "poster_path") required this.posterPath,
-      @JsonKey(name: "name") required this.name});
+      @JsonKey(name: "name") required this.name,
+      @JsonKey(name: "first_air_date") required this.releaseDate,
+      @JsonKey(name: "vote_average") required this.voteAverage,
+      @JsonKey(name: "overview") required this.overview});
 
   factory _$_Result.fromJson(Map<String, dynamic> json) =>
       _$$_ResultFromJson(json);
 
   @override
   @JsonKey(name: "poster_path")
-  final String posterPath;
+  final String? posterPath;
   @override
   @JsonKey(name: "name")
-  final String name;
+  final String? name;
+  @override
+  @JsonKey(name: "first_air_date")
+  final String? releaseDate;
+  @override
+  @JsonKey(name: "vote_average")
+  final double? voteAverage;
+  @override
+  @JsonKey(name: "overview")
+  final String? overview;
 
   @override
   String toString() {
-    return 'Result(posterPath: $posterPath, name: $name)';
+    return 'Result(posterPath: $posterPath, name: $name, releaseDate: $releaseDate, voteAverage: $voteAverage, overview: $overview)';
   }
 
   @override
@@ -261,7 +315,12 @@ class _$_Result implements _Result {
             other is _$_Result &&
             const DeepCollectionEquality()
                 .equals(other.posterPath, posterPath) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.releaseDate, releaseDate) &&
+            const DeepCollectionEquality()
+                .equals(other.voteAverage, voteAverage) &&
+            const DeepCollectionEquality().equals(other.overview, overview));
   }
 
   @JsonKey(ignore: true)
@@ -269,7 +328,10 @@ class _$_Result implements _Result {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(posterPath),
-      const DeepCollectionEquality().hash(name));
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(releaseDate),
+      const DeepCollectionEquality().hash(voteAverage),
+      const DeepCollectionEquality().hash(overview));
 
   @JsonKey(ignore: true)
   @override
@@ -286,17 +348,29 @@ class _$_Result implements _Result {
 
 abstract class _Result implements Result {
   const factory _Result(
-      {@JsonKey(name: "poster_path") required final String posterPath,
-      @JsonKey(name: "name") required final String name}) = _$_Result;
+      {@JsonKey(name: "poster_path") required final String? posterPath,
+      @JsonKey(name: "name") required final String? name,
+      @JsonKey(name: "first_air_date") required final String? releaseDate,
+      @JsonKey(name: "vote_average") required final double? voteAverage,
+      @JsonKey(name: "overview") required final String? overview}) = _$_Result;
 
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
   @override
   @JsonKey(name: "poster_path")
-  String get posterPath;
+  String? get posterPath;
   @override
   @JsonKey(name: "name")
-  String get name;
+  String? get name;
+  @override
+  @JsonKey(name: "first_air_date")
+  String? get releaseDate;
+  @override
+  @JsonKey(name: "vote_average")
+  double? get voteAverage;
+  @override
+  @JsonKey(name: "overview")
+  String? get overview;
   @override
   @JsonKey(ignore: true)
   _$$_ResultCopyWith<_$_Result> get copyWith =>

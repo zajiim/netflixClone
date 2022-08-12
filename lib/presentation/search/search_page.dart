@@ -6,6 +6,8 @@ import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_idle.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_results.dart';
 
+import 'widgets/search_result_list_widget.dart';
+
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -40,7 +42,10 @@ class SearchScreen extends StatelessWidget {
                       .add(TvShowQuery(tvShowQuery: value));
                 },
               ),
-
+              const SizedBox(
+                height: 10,
+              ),
+              
               Expanded(
                 child: BlocBuilder<SearchBloc, SearchState>(
                   builder: (context, state) {
@@ -50,7 +55,7 @@ class SearchScreen extends StatelessWidget {
                   },
                 ),
               ),
-              // const Expanded(child: SearchResultsWidget(),),
+             // const Expanded(child: SearchResultsWidget(),),
             ],
           ),
         ),

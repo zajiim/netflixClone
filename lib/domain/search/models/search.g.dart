@@ -17,11 +17,17 @@ Map<String, dynamic> _$$_SearchToJson(_$_Search instance) => <String, dynamic>{
     };
 
 _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
-      posterPath: json['poster_path'] as String,
-      name: json['name'] as String,
+      posterPath: json['poster_path'] as String?,
+      name: json['name'] as String?,
+      releaseDate: json['first_air_date'] as String?,
+      voteAverage: (json['vote_average'] as num?)?.toDouble(),
+      overview: json['overview'] as String?,
     );
 
 Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
       'poster_path': instance.posterPath,
       'name': instance.name,
+      'first_air_date': instance.releaseDate,
+      'vote_average': instance.voteAverage,
+      'overview': instance.overview,
     };
