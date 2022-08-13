@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_bloc/core/colors/colors.dart';
 
-import '../../../core/styles/search_list_text_style.dart';
+import '../../../core/styles/styles.dart';
 import 'main_card_poster_widget.dart';
 
 class SearchResultListWidget extends StatelessWidget {
@@ -28,7 +29,7 @@ class SearchResultListWidget extends StatelessWidget {
       child: Row(
         children: [
           MainCardPoster(
-            imgUrl: imgUrl ,
+            imgUrl: imgUrl,
           ),
           const SizedBox(
             width: 10,
@@ -39,17 +40,21 @@ class SearchResultListWidget extends StatelessWidget {
             // color: Colors.red,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
                       'Name: ',
-                      style: listStyle,
+                      style: textStyle,
                     ),
-                    Text(
-                      tvShowName,
-                      style: listStyle,
+                    Expanded(
+                      child: Text(
+                        tvShowName,
+                        style: listStyle,
+                      ),
                     ),
                   ],
                 ),
@@ -58,7 +63,7 @@ class SearchResultListWidget extends StatelessWidget {
                   children: [
                     const Text(
                       'Vote average: ',
-                      style: listStyle,
+                      style: textStyle,
                     ),
                     Text(
                       voting.toString(),
@@ -70,30 +75,44 @@ class SearchResultListWidget extends StatelessWidget {
                   children: [
                     const Text(
                       'Release date: ',
-                      style: listStyle,
+                      style: textStyle,
                     ),
-                    Text(
-                      releaseDate,
-                      style: listStyle,
+                    Expanded(
+                      child: Text(
+                        releaseDate,
+                        style: listStyle,
+                      ),
                     ),
                   ],
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Overview: ',
-                      style: listStyle,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Overview: ',
+                          style: textStyle,
+                        ),
+                        const SizedBox(
+                          height: 60,
+                        ),
+                        TextButton(
+                            onPressed: () {},
+                            child: Icon(
+                              Icons.download,
+                              color: kGreenColor,
+                            ))
+                      ],
                     ),
                     Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Text(
-                          overview,
-                          style: listStyle,
-                          maxLines: 6,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      child: Text(
+                        overview,
+                        style: listStyleNormal,
+                        maxLines: 8,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],

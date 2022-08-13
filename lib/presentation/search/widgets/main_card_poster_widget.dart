@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MainCardPoster extends StatelessWidget {
-  final String? imgUrl;
+  final String imgUrl;
   MainCardPoster({Key? key, required this.imgUrl}) : super(key: key);
 
   @override
@@ -15,8 +15,7 @@ class MainCardPoster extends StatelessWidget {
         ),
         image: DecorationImage(
           image: NetworkImage(
-            imgUrl ??
-                'https://www.craigfouche.co.za/wp-content/uploads/2015/07/City-No-Camera-icon.png',
+            imgUrl,
           ),
           fit: BoxFit.cover,
         ),

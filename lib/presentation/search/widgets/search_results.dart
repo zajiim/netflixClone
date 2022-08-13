@@ -4,7 +4,7 @@ import 'package:netflix_bloc/core/constants/strings.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_text_widget.dart';
 
 import '../../../application/search/search_bloc.dart';
-import '../../../core/styles/search_list_text_style.dart';
+import '../../../core/styles/styles.dart';
 import 'main_card_poster_widget.dart';
 import 'search_result_list_widget.dart';
 
@@ -61,10 +61,12 @@ class SearchResultsWidget extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   final tvShows = state.searchResultList[index];
                   return SearchResultListWidget(
-                    imgUrl: '$imageAppendUrl${tvShows.posterPath}',
-                    releaseDate: tvShows.releaseDate!,
-                    overview: tvShows.overview!,
-                    tvShowName: tvShows.name!,
+                    imgUrl: (tvShows.posterPath != null)
+                        ? '$imageAppendUrl${tvShows.posterPath}'
+                        : 'https://w7.pngwing.com/pngs/871/8/png-transparent-computer-icons-error-triangle-icon-angle-triangle-black-thumbnail.png',
+                    releaseDate: tvShows.releaseDate ?? 'No data found',
+                    overview: tvShows.overview ?? 'No data found',
+                    tvShowName: tvShows.name ?? 'No data found',
                     voting: tvShows.voteAverage!,
                   );
                 }),
