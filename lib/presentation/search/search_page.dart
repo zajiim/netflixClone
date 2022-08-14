@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_bloc/application/search/search_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
+import 'package:netflix_bloc/domain/core/debounce/debounce.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_idle.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_results.dart';
 
-import 'widgets/search_result_list_widget.dart';
-
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  SearchScreen({Key? key}) : super(key: key);
 
+  final _debouncer = Debouncer(milliseconds: 1000);
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -38,14 +38,19 @@ class SearchScreen extends StatelessWidget {
                   color: kWhiteColor,
                 ),
                 onChanged: (value) {
-                  BlocProvider.of<SearchBloc>(context)
-                      .add(TvShowQuery(tvShowQuery: value));
+                  if (value.isEmpty) {
+                    return;
+                  }
+                  _debouncer.run(() {
+                    BlocProvider.of<SearchBloc>(context)
+                        .add(TvShowQuery(tvShowQuery: value));
+                  });
                 },
               ),
               const SizedBox(
                 height: 10,
               ),
-              
+
               Expanded(
                 child: BlocBuilder<SearchBloc, SearchState>(
                   builder: (context, state) {
@@ -55,7 +60,7 @@ class SearchScreen extends StatelessWidget {
                   },
                 ),
               ),
-             // const Expanded(child: SearchResultsWidget(),),
+              // const Expanded(child: SearchResultsWidget(),),
             ],
           ),
         ),

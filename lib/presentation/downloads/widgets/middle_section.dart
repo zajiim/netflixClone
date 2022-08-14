@@ -15,8 +15,6 @@ class MiddleSection extends StatelessWidget {
       BlocProvider.of<DownloadsBloc>(context)
           .add(const DownloadsEvent.getDownloadsImages());
     });
-    // BlocProvider.of<DownloadsBloc>(context)
-    //     .add(const DownloadsEvent.getDownloadsImages());
 
     final screenWidth = MediaQuery.of(context).size;
 
@@ -45,7 +43,10 @@ class MiddleSection extends StatelessWidget {
               height: screenWidth.width,
               width: screenWidth.width,
               child: state.isLoading
-                  ? const Center(child: CircularProgressIndicator())
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                      strokeWidth: 6,
+                    ))
                   : Stack(
                       alignment: Alignment.center,
                       children: [

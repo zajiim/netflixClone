@@ -10,7 +10,7 @@ import 'package:netflix_bloc/domain/downloads/downloads_service.dart';
 import 'package:netflix_bloc/domain/downloads/models/downloads.dart';
 
 @LazySingleton(as: DownloadsService)
-class DownloadsRepostory implements DownloadsService {
+class DownloadsRepository implements DownloadsService {
   @override
   Future<Either<MainFailures, List<Downloads>>> getDownloadsImages() async {
     try {
@@ -19,12 +19,11 @@ class DownloadsRepostory implements DownloadsService {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         log(response.data.toString());
-        final downloadsList =
-            (response.data['results'] as List).map((items) {
+        final downloadsList = (response.data['results'] as List).map((items) {
           return Downloads.fromJson(items);
         }).toList();
         print(downloadsList.toString());
-       
+
         return Right(downloadsList);
       } else {
         return const Left(MainFailures.serverFailures());

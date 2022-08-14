@@ -1,17 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_bloc/application/fast_laugh/fast_laugh_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
+import 'package:netflix_bloc/core/constants/strings.dart';
+import 'package:netflix_bloc/domain/downloads/models/downloads.dart';
 import 'package:netflix_bloc/presentation/fast_laugh/widgets/video_menu_items.dart';
+import 'package:video_player/video_player.dart';
+
+class VideoListItemInheritedWidget extends InheritedWidget {
+  final Widget childWidget;
+  final Downloads videoData;
+
+  const VideoListItemInheritedWidget(
+      {Key? key, required this.childWidget, required this.videoData})
+      : super(key: key, child: childWidget);
+
+  @override
+  bool updateShouldNotify(covariant VideoListItemInheritedWidget oldWidget) {
+    return oldWidget.videoData != videoData;
+  }
+
+  static VideoListItemInheritedWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<VideoListItemInheritedWidget>();
+  }
+}
 
 class VideoListItem extends StatelessWidget {
   final int index;
+
   const VideoListItem({required this.index, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final imgUrl =
+        VideoListItemInheritedWidget.of(context)?.videoData.posterPath;
+    final videoUrl = videoUrls[index % videoUrls.length];
+
     return Stack(
       children: [
-        Container(
-          color: Colors.accents[index % Colors.accents.length],
+        FastLaughVideoPlayerWidget(
+          onStateChanged: (bool) {},
+          videoUrl: videoUrl,
         ),
         Positioned(
           bottom: 0,
@@ -38,31 +67,31 @@ class VideoListItem extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 15,
                       ),
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundImage: NetworkImage(
-                          'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/56v2KjBlU4XaOv9rVYEQypROD7P.jpg',
-                        ),
+                        backgroundImage: imgUrl == null
+                            ? null
+                            : NetworkImage('$imageAppendUrl$imgUrl'),
                       ),
                     ),
-                    VideoMenuItems(
+                    const VideoMenuItems(
                       menuIcon: Icons.emoji_emotions,
                       menuTitle: 'LOL',
                     ),
-                    VideoMenuItems(
+                    const VideoMenuItems(
                       menuIcon: Icons.add,
                       menuTitle: 'My List',
                     ),
-                    VideoMenuItems(
+                    const VideoMenuItems(
                       menuIcon: Icons.send,
                       menuTitle: 'Share',
                     ),
-                    VideoMenuItems(
+                    const VideoMenuItems(
                       menuIcon: Icons.play_arrow_rounded,
                       menuTitle: 'Play',
                     ),
@@ -74,5 +103,58 @@ class VideoListItem extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class FastLaughVideoPlayerWidget extends StatefulWidget {
+  final String videoUrl;
+  final void Function(bool isPlaying) onStateChanged;
+  const FastLaughVideoPlayerWidget({
+    Key? key,
+    required this.videoUrl,
+    required this.onStateChanged,
+  }) : super(key: key);
+
+  @override
+  State<FastLaughVideoPlayerWidget> createState() =>
+      _FastLaughVideoPlayerWidgetState();
+}
+
+class _FastLaughVideoPlayerWidgetState
+    extends State<FastLaughVideoPlayerWidget> {
+  late VideoPlayerController _videoPlayerController;
+
+  @override
+  void initState() {
+    _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
+    _videoPlayerController.initialize().then((value) {
+      setState(() {
+        _videoPlayerController.play();
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: _videoPlayerController.value.isInitialized
+          ? AspectRatio(
+              aspectRatio: _videoPlayerController.value.aspectRatio,
+              child: VideoPlayer(_videoPlayerController))
+          : const Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 6.0,
+              ),
+            ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
   }
 }

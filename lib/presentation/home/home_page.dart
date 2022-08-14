@@ -101,9 +101,15 @@ class HomeScreen extends StatelessWidget {
                                   width: 15.0,
                                 ),
                                 Container(
-                                  color: Colors.blue,
+                                  
                                   height: 25.0,
                                   width: 25.0,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/avatar.png',
+                                    ),
+                                  )),
                                 ),
                               ],
                             ),
