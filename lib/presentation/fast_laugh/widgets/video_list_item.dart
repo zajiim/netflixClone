@@ -50,22 +50,22 @@ class VideoListItem extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CircleAvatar(
-                    backgroundColor: kBackgroundColor.withOpacity(0.2),
-                    radius: 25,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.volume_off,
-                        color: kWhiteColor,
-                      ),
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                //   child: CircleAvatar(
+                //     backgroundColor: kBackgroundColor.withOpacity(0.2),
+                //     radius: 25,
+                //     child: IconButton(
+                //       onPressed: () {},
+                //       icon: const Icon(
+                //         Icons.volume_off,
+                //         color: kWhiteColor,
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Column(
                   children: [
                     Padding(
@@ -90,10 +90,6 @@ class VideoListItem extends StatelessWidget {
                     const VideoMenuItems(
                       menuIcon: Icons.send,
                       menuTitle: 'Share',
-                    ),
-                    const VideoMenuItems(
-                      menuIcon: Icons.play_arrow_rounded,
-                      menuTitle: 'Play',
                     ),
                   ],
                 ),
@@ -123,7 +119,8 @@ class FastLaughVideoPlayerWidget extends StatefulWidget {
 class _FastLaughVideoPlayerWidgetState
     extends State<FastLaughVideoPlayerWidget> {
   late VideoPlayerController _videoPlayerController;
-
+  bool isClicked = false;
+  bool isMuted = false;
   @override
   void initState() {
     _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
@@ -137,19 +134,80 @@ class _FastLaughVideoPlayerWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
-      child: _videoPlayerController.value.isInitialized
-          ? AspectRatio(
-              aspectRatio: _videoPlayerController.value.aspectRatio,
-              child: VideoPlayer(_videoPlayerController))
-          : const Center(
-              child: CircularProgressIndicator(
-                strokeWidth: 6.0,
+    return Stack(children: [
+      SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: _videoPlayerController.value.isInitialized
+            ? AspectRatio(
+                aspectRatio: _videoPlayerController.value.aspectRatio,
+                child: VideoPlayer(_videoPlayerController))
+            : const Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 6.0,
+                ),
               ),
-            ),
-    );
+      ),
+      Positioned(
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        child: AnimatedOpacity(
+          opacity: isClicked ? 0.0 : 1.0,
+          duration: const Duration(seconds: 2),
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                if (_videoPlayerController.value.isPlaying) {
+                  _videoPlayerController.pause();
+                } else {
+                  _videoPlayerController.play();
+                }
+              });
+            },
+            child: (_videoPlayerController.value.isPlaying)
+                ? const Icon(
+                    Icons.pause,
+                    size: 50,
+                    color: kWhiteColor,
+                  )
+                : const Icon(
+                    Icons.play_arrow,
+                    size: 50,
+                    color: kWhiteColor,
+                  ),
+          ),
+        ),
+      ),
+      Positioned(
+        left: 15,
+        bottom: 25,
+        child: GestureDetector(
+          onTap: () {
+            isMuted = !isMuted;
+            setState(() {
+              if (isMuted) {
+                _videoPlayerController.setVolume(0);
+              } else {
+                _videoPlayerController.setVolume(100);
+              }
+            });
+          },
+          child: (isMuted)
+              ? const Icon(
+                  Icons.volume_off,
+                  size: 40,
+                  color: kWhiteColor,
+                )
+              : const Icon(
+                  Icons.volume_up,
+                  size: 40,
+                  color: kWhiteColor,
+                ),
+        ),
+      ),
+    ]);
   }
 
   @override
