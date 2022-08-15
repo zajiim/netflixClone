@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_bloc/application/new_and_hot/new_and_hot_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/common_widgets/title_bar.dart';
 import 'package:netflix_bloc/presentation/new&hot/widgets/coming_soon_widget.dart';
@@ -9,6 +11,14 @@ class NewAndHotScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<NewAndHotBloc>(context).add(
+        const ComingSoonLoaded(),
+      );
+      BlocProvider.of<NewAndHotBloc>(context).add(
+        const EveryOnesWatchingLoaded(),
+      );
+    });
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -34,9 +44,14 @@ class NewAndHotScreen extends StatelessWidget {
                   width: 15.0,
                 ),
                 Container(
-                  width: 40.0,
-                  height: 20.0,
-                  color: Colors.blue,
+                  height: 25.0,
+                  width: 25.0,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                    image: AssetImage(
+                      'assets/images/avatar.png',
+                    ),
+                  )),
                 ),
                 const SizedBox(
                   height: 10,
@@ -64,7 +79,10 @@ class NewAndHotScreen extends StatelessWidget {
             ),
           ),
           body: const TabBarView(
-            children: [ComingSoonWidget(), EveryonesWatchingWidget()],
+            children: [
+              ComingSoonWidget(),
+              EveryonesWatchingWidget(),
+            ],
           )),
     );
   }

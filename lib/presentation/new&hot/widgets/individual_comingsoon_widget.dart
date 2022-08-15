@@ -1,12 +1,36 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/new&hot/widgets/side_button_widget.dart';
 
 class IndividualComingSoonWidget extends StatelessWidget {
-  const IndividualComingSoonWidget({
+  final String id;
+  final String? imgUrl;
+  final String? month;
+  final String? date;
+  final String? showName;
+
+  final String? releaseDate;
+  final String? overview;
+  IndividualComingSoonWidget({
     Key? key,
+    required this.id,
+    this.imgUrl,
+    this.showName,
+    this.releaseDate,
+    this.overview,
+    this.month,
+    this.date,
   }) : super(key: key);
 
+  List days = [
+    "Sunday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+  ];
+  final _random = Random();
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -17,14 +41,16 @@ class IndividualComingSoonWidget extends StatelessWidget {
           width: 70,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                'Jul',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                month.toString(),
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
               ),
               Text(
-                '25',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                date.toString(),
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
               )
             ],
           ),
@@ -39,20 +65,21 @@ class IndividualComingSoonWidget extends StatelessWidget {
                   SizedBox(
                     height: 200,
                     child: Image.network(
-                      'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hmLTIRtVyTHShJl2Wb8LHmvUgJm.jpg',
+                      imgUrl.toString(),
                       fit: BoxFit.contain,
                     ),
                   ),
                   Positioned(
-                    bottom: 10,
+                    bottom: 18,
                     right: 10,
                     child: CircleAvatar(
                       backgroundColor: kBackgroundColor.withOpacity(0.2),
-                      radius: 25,
+                      radius: 20,
                       child: IconButton(
                         onPressed: () {},
                         icon: const Icon(
                           Icons.volume_off,
+                          size: 15,
                           color: kWhiteColor,
                         ),
                       ),
@@ -60,22 +87,38 @@ class IndividualComingSoonWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Sherlock',
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                  SizedBox(
+                    width: 200,
+                    child: Text(
+                      showName.toString(),
+                      style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                  const SizedBox(
-                    width: 20,
+                  const Spacer(),
+                  // const SizedBox(
+                  //   width: 20,
+                  // ),
+                  Expanded(
+                    child: SideButtons(
+                      icon: Icons.notifications_outlined,
+                      title: 'Remind Me',
+                    ),
                   ),
                   SideButtons(
-                      icon: Icons.notifications_outlined, title: 'Remind Me'),
-                  SideButtons(icon: Icons.info_outline, title: 'Info'),
+                    icon: Icons.info_outline,
+                    title: 'Info',
+                  ),
                   const SizedBox(
                     width: 8,
                   ),
@@ -88,7 +131,7 @@ class IndividualComingSoonWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Coming on Friday',
+                    'Coming on ${days[_random.nextInt(days.length)]}',
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -116,9 +159,9 @@ class IndividualComingSoonWidget extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
-                    'Sherlock',
-                    style: TextStyle(
+                  Text(
+                    showName.toString(),
+                    style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w700,
                     ),
@@ -126,9 +169,11 @@ class IndividualComingSoonWidget extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
-                    'The fourth series begins with the nation’s favourite detective, the mercurial Sherlock Holmes, back once more on British soil, as Doctor Watson and his wife, Mary, prepare for their biggest ever challenge - becoming parents for the first time.',
-                    style: TextStyle(color: kGreyColor),
+                  Text(
+                    overview.toString(),
+                    style: const TextStyle(color: kGreyColor),
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),

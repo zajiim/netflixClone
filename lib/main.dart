@@ -11,6 +11,7 @@ import 'package:netflix_bloc/domain/core/dependency_injection/injectable.dart';
 import 'package:netflix_bloc/presentation/main_page/widgets/main_screen_page.dart';
 
 import 'application/fast_laugh/fast_laugh_bloc.dart';
+import 'application/new_and_hot/new_and_hot_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<DownloadsBloc>()),
         BlocProvider(create: (context) => getIt<SearchBloc>()),
         BlocProvider(create: (context) => getIt<FastLaughBloc>()),
+        BlocProvider(create: (context) => getIt<NewAndHotBloc>()),
       ],
       child: MaterialApp(
         theme: ThemeData(

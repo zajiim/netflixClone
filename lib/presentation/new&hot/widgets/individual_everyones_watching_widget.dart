@@ -3,27 +3,36 @@ import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/home/widgets/side_buttons_widget_homepage.dart';
 
 class IndividualEveryonesWatching extends StatelessWidget {
+  final String? movieName;
+  final String? imgUrl;
+  final String? overview;
   const IndividualEveryonesWatching({
     Key? key,
+    this.movieName,
+    this.imgUrl,
+    this.overview,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(
           height: 10,
         ),
-        const Text(
-          'The Wolf of Wall Street',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+        Text(
+          movieName.toString(),
+          style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           height: 10,
         ),
-        const Text(
-          'A New York stockbroker refuses to cooperate in a large securities fraud case involving corruption on Wall Street, corporate banking world and mob infiltration. Based on Jordan Belfort\'s autobiography.',
-          style: TextStyle(color: kGreyColor),
+        Text(
+          overview.toString(),
+          style: const TextStyle(color: kGreyColor),
+          maxLines: 6,
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(
           height: 20,
@@ -33,7 +42,7 @@ class IndividualEveryonesWatching extends StatelessWidget {
             SizedBox(
               height: 180,
               child: Image.network(
-                'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/blbA7NEHARQOWy5i9VF5K2kHrPc.jpg',
+                imgUrl.toString(),
                 fit: BoxFit.contain,
               ),
             ),
@@ -58,11 +67,17 @@ class IndividualEveryonesWatching extends StatelessWidget {
           height: 20,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'The Wolf of Wall Street',
-              style: TextStyle(fontSize: 21, fontWeight: FontWeight.w700),
+            Expanded(
+              child: Text(
+                movieName.toString(),
+                style:
+                    const TextStyle(fontSize: 21, fontWeight: FontWeight.w700),
+              ),
+            ),
+            const SizedBox(
+              width: 30,
             ),
             Expanded(
               child: Row(
