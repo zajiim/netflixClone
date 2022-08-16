@@ -3,8 +3,8 @@ import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/home/widgets/side_buttons_widget_homepage.dart';
 
 class MainScreenCard extends StatelessWidget {
-  const MainScreenCard({Key? key}) : super(key: key);
-
+   MainScreenCard({Key? key, required this.imgUrl}) : super(key: key);
+  final String? imgUrl;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -12,11 +12,11 @@ class MainScreenCard extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
-                'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/13r1DFhfL0qufFjXnrvWuh6qKqH.jpg',
+                imgUrl.toString(),
               ),
             ),
           ),

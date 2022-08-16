@@ -44,8 +44,10 @@ class IndividualComingSoonWidget extends StatelessWidget {
             children: [
               Text(
                 month.toString(),
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    ),
               ),
               Text(
                 date.toString(),
@@ -67,6 +69,24 @@ class IndividualComingSoonWidget extends StatelessWidget {
                     child: Image.network(
                       imgUrl.toString(),
                       fit: BoxFit.contain,
+                      // loadingBuilder:
+                      //     (context, child, ImageChunkEvent? progressIndicator) {
+                      //   if (progressIndicator == null) {
+                      //     return child;
+                      //   } else {
+                      //     return const Center(
+                      //       child: CircularProgressIndicator(strokeWidth: 2),
+                      //     );
+                      //   }
+                      // },
+                      // errorBuilder: (context, error, stackTrace) {
+                      //   return const Center(
+                      //     child: Icon(
+                      //       Icons.wifi_off,
+                      //       color: kWhiteColor,
+                      //     ),
+                      //   );
+                      // },
                     ),
                   ),
                   Positioned(

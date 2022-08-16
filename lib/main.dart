@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_bloc/application/downloads/downloads_bloc.dart';
+import 'package:netflix_bloc/application/home/home_bloc.dart';
 import 'package:netflix_bloc/application/search/search_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/domain/core/dependency_injection/injectable.dart';
@@ -11,6 +12,7 @@ import 'package:netflix_bloc/domain/core/dependency_injection/injectable.dart';
 import 'package:netflix_bloc/presentation/main_page/widgets/main_screen_page.dart';
 
 import 'application/fast_laugh/fast_laugh_bloc.dart';
+
 import 'application/new_and_hot/new_and_hot_bloc.dart';
 
 Future<void> main() async {
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<SearchBloc>()),
         BlocProvider(create: (context) => getIt<FastLaughBloc>()),
         BlocProvider(create: (context) => getIt<NewAndHotBloc>()),
+       BlocProvider(create: (context) => getIt<HomeBloc>()),
       ],
       child: MaterialApp(
         theme: ThemeData(

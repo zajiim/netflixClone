@@ -32,22 +32,24 @@ class ComingSoonWidget extends StatelessWidget {
           return ListView.builder(
             itemBuilder: ((context, index) {
               final tvShow = state.comingSoonList[index];
-              String month = '';
-              String date = '';
-              try {
-                var date = DateTime.tryParse(tvShow.firstAirDate!);
-                final formattedDate = DateFormat.yMMMMd('en_US').format(date!);
-                month = formattedDate
-                    .split(' ')
-                    .first
-                    .substring(0, 3)
-                    .toUpperCase();
-                date = tvShow.firstAirDate!.split('-')[1] as DateTime?;
-              } catch (_) {
-                month = '';
-                date = '';
-              }
+              // String month = '';
+              // String date = '';
+              // try {
+              //   var date = DateTime.tryParse(tvShow.firstAirDate!);
+              //   final formattedDate = DateFormat.yMMMMd('en_US').format(date!);
+              //   month = formattedDate
+              //       .split(' ')
+              //       .first
+              //       .substring(0, 3)
+              //       .toUpperCase();
+              //   date = tvShow.firstAirDate!.split('-')[1] as DateTime?;
+              // } catch (_) {
+              //   month = '';
+              //   date = '';
+              // }
 
+              final date = DateTime.parse(tvShow.firstAirDate!);
+              final formattedDate = DateFormat.yMMMMd('en_US').format(date);
               return IndividualComingSoonWidget(
                 id: tvShow.id.toString(),
                 imgUrl: (tvShow.posterPath != null)
@@ -55,8 +57,14 @@ class ComingSoonWidget extends StatelessWidget {
                     : '$imageAppendUrl${tvShow.posterPath}',
                 overview: tvShow.overview ?? 'No description available',
                 showName: tvShow.name ?? tvShow.originalName,
-                month: month,
-                date: date,
+                month: formattedDate
+                    .split(' ')
+                    .first
+                    .substring(0, 3)
+                    .toUpperCase(),
+                date: tvShow.firstAirDate!.split('-')[1],
+                // month: month,
+                // date: date,
               );
             }),
             itemCount: state.comingSoonList.length,

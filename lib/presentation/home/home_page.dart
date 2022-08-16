@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_bloc/application/home/home_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
+import 'package:netflix_bloc/core/constants/strings.dart';
 import 'package:netflix_bloc/presentation/home/widgets/main_screen_card_widget.dart';
 
 import 'package:netflix_bloc/presentation/home/widgets/title_card_widget.dart';
 import 'package:netflix_bloc/presentation/home/widgets/top_shows_card_widget.dart';
+
+import '../../core/styles/styles.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   ValueNotifier<bool> scrollDirectionNotifier = ValueNotifier(true);
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<HomeBloc>(context).add(
+        const GetHomeSreenTrending(),
+      );
+    });
     return Scaffold(
       body: ValueListenableBuilder(
         valueListenable: scrollDirectionNotifier,
@@ -27,47 +38,83 @@ class HomeScreen extends StatelessWidget {
             },
             child: Stack(
               children: [
-                ListView(
-                  children: [
-                    const MainScreenCard(),
-                    TitleCardWidget(
-                      title: 'Released in the past year',
-                      imgUrl:
-                          'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6zltP23zLGPogsHZUazSrrwNuKs.jpg',
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TitleCardWidget(
-                      title: 'Trending Now',
-                      imgUrl:
-                          'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rJHC1RUORuUhtfNb4Npclx0xnOf.jpg',
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TopShowsCardWidget(
-                      title: 'Top 10 Shows Airing now',
-                      imgUrl:
-                          'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oktTNFM8PzdseiK1X0E0XhB6LvP.jpg',
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TitleCardWidget(
-                      title: 'Tense Dramas',
-                      imgUrl:
-                          'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wKiOkZTN9lUUUNZLmtnwubZYONg.jpg',
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TitleCardWidget(
-                      title: 'South Indian Movies',
-                      imgUrl:
-                          'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kzZUa05wZOEiC2UVuJA2T8VrETU.jpg',
-                    ),
-                  ],
+                BlocBuilder<HomeBloc, HomeState>(
+                  builder: (context, state) {
+                    if (state.isLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        ),
+                      );
+                    } else if (state.isError) {
+                      return const Center(
+                        child: Text('Error while loading data',
+                            style: errorMessageStyle),
+                      );
+                    }
+                    final trendingNowMoviesList = state.trendingMoviesList
+                        .map(
+                            (items) => '$imageAppendUrl${items['poster_path']}')
+                        .toList();
+                    final trendingNowShowsList = state.trendingShowsList
+                        .map(
+                            (items) => '$imageAppendUrl${items['poster_path']}')
+                        .toList();
+
+                    final upcomingMoviesList = state.upcomingMoviesList
+                        .map((item) => '$imageAppendUrl${item['poster_path']}')
+                        .toList();
+                    final nowPlayingMoviesList = state.nowPlayingShowsList
+                        .map((item) => '$imageAppendUrl${item['poster_path']}')
+                        .toList();
+                    final allTimePopularList = state.popularMoviesList
+                        .map((item) => '$imageAppendUrl${item['poster_path']}')
+                        .toList();
+                    final imageUrl = state.nowPlayingShowsList
+                        .map(
+                            (items) => '$imageAppendUrl${items['poster_path']}')
+                        .toList();
+                    print(imageUrl);
+                    return ListView(
+                      children: [
+                        MainScreenCard(
+                          imgUrl: imageUrl[0],
+                        ),
+                        TitleCardWidget(
+                          title: "Released in the past year",
+                          posterList: upcomingMoviesList,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        TitleCardWidget(
+                          title: 'Trending Now',
+                          posterList: nowPlayingMoviesList,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        TopShowsCardWidget(
+                          title: 'Alltime Top Rated movies',
+                          posterList: allTimePopularList,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        TitleCardWidget(
+                          title: 'Tense Dramas',
+                          posterList: nowPlayingMoviesList,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        TitleCardWidget(
+                          title: 'South Indian Movies',
+                          posterList: trendingNowShowsList,
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 scrollDirectionNotifier.value == true
                     ? AnimatedContainer(
@@ -77,7 +124,7 @@ class HomeScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 130,
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -101,7 +148,6 @@ class HomeScreen extends StatelessWidget {
                                   width: 15.0,
                                 ),
                                 Container(
-                                  
                                   height: 25.0,
                                   width: 25.0,
                                   decoration: const BoxDecoration(

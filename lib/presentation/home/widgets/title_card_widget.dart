@@ -3,12 +3,13 @@ import 'package:netflix_bloc/presentation/common_widgets/main_card.dart';
 import 'package:netflix_bloc/presentation/home/widgets/title_widget.dart';
 
 class TitleCardWidget extends StatelessWidget {
-  String title;
-  String imgUrl;
+  final String title;
+  final List<String> posterList;
+  
   TitleCardWidget({
     required this.title,
-    required this.imgUrl,
-    Key? key,
+    
+    Key? key, required this.posterList,
   }) : super(key: key);
 
   @override
@@ -27,9 +28,9 @@ class TitleCardWidget extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: List.generate(
-                10,
+                posterList.length,
                 (index) => MainCardWidget(
-                  imgUrl: imgUrl,
+                  imgUrl: posterList[index],
                 ),
               ),
             ),
