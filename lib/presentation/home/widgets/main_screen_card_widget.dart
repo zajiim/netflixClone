@@ -3,7 +3,7 @@ import 'package:netflix_bloc/core/colors/colors.dart';
 import 'package:netflix_bloc/presentation/home/widgets/side_buttons_widget_homepage.dart';
 
 class MainScreenCard extends StatelessWidget {
-   MainScreenCard({Key? key, required this.imgUrl}) : super(key: key);
+  MainScreenCard({Key? key, required this.imgUrl}) : super(key: key);
   final String? imgUrl;
   @override
   Widget build(BuildContext context) {
@@ -11,8 +11,8 @@ class MainScreenCard extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 600,
-          decoration:  BoxDecoration(
+          height: 500,
+          decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(

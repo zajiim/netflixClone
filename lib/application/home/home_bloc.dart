@@ -2,10 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_bloc/domain/home/home_service.dart';
-import 'package:netflix_bloc/domain/new&hot/new_&_hot_service.dart';
-import 'dart:math';
-import '../../domain/home/models/home.dart';
-import '../../domain/new&hot/models/new&hot.dart';
+
+
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -22,6 +20,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) : super(HomeState.initial()) {
     on<GetHomeSreenTrending>((event, emit) async {
       emit(state.copyWith(
+        trendingMoviesList: [],
+        trendingShowsList: [],
+        upcomingMoviesList: [],
+        nowPlayingShowsList: [],
+        popularMoviesList: [],
         isError: false,
         isLoading: true,
       ));
@@ -47,8 +50,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }, (success) {
         return HomeState(
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
-          trendingShowsList: state.trendingShowsList,
-          trendingMoviesList: success.popularMoviesResults,
+          trendingShowsList: success.results,
+          trendingMoviesList: success.results,
           upcomingMoviesList: state.upcomingMoviesList,
           nowPlayingShowsList: state.nowPlayingShowsList,
           popularMoviesList: state.popularMoviesList,
@@ -73,7 +76,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         return HomeState(
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           trendingMoviesList: state.trendingShowsList,
-          trendingShowsList: success.popularMoviesResults,
+          trendingShowsList: success.results,
           upcomingMoviesList: state.upcomingMoviesList,
           popularMoviesList: state.popularMoviesList,
           nowPlayingShowsList: state.nowPlayingShowsList,
@@ -100,7 +103,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           trendingShowsList: state.trendingMoviesList,
           trendingMoviesList: state.trendingShowsList,
           popularMoviesList: state.popularMoviesList,
-          upcomingMoviesList: success.popularMoviesResults,
+          upcomingMoviesList: success.results,
           nowPlayingShowsList: state.nowPlayingShowsList,
           isLoading: false,
           isError: false,
@@ -127,7 +130,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           trendingMoviesList: state.trendingMoviesList,
           popularMoviesList: state.popularMoviesList,
           upcomingMoviesList: state.upcomingMoviesList,
-          nowPlayingShowsList: success.popularMoviesResults,
+          nowPlayingShowsList: success.results,
           isLoading: false,
           isError: false,
         );
@@ -151,7 +154,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           trendingShowsList: state.trendingShowsList,
           trendingMoviesList: state.trendingMoviesList,
-          popularMoviesList: success.popularMoviesResults,
+          popularMoviesList: success.results,
           upcomingMoviesList: state.upcomingMoviesList,
           nowPlayingShowsList: state.nowPlayingShowsList,
           isLoading: false,

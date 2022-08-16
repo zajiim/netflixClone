@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MainCardPoster extends StatelessWidget {
   final String imgUrl;
-  MainCardPoster({Key? key, required this.imgUrl}) : super(key: key);
+ const MainCardPoster({Key? key, required this.imgUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

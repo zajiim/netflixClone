@@ -21,7 +21,7 @@ HomeScreenData _$HomeScreenDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$HomeScreenData {
   @JsonKey(name: "results")
-  List<dynamic> get popularMoviesResults => throw _privateConstructorUsedError;
+  List<dynamic> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $HomeScreenDataCopyWith<$Res> {
   factory $HomeScreenDataCopyWith(
           HomeScreenData value, $Res Function(HomeScreenData) then) =
       _$HomeScreenDataCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: "results") List<dynamic> popularMoviesResults});
+  $Res call({@JsonKey(name: "results") List<dynamic> results});
 }
 
 /// @nodoc
@@ -48,12 +48,12 @@ class _$HomeScreenDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? popularMoviesResults = freezed,
+    Object? results = freezed,
   }) {
     return _then(_value.copyWith(
-      popularMoviesResults: popularMoviesResults == freezed
-          ? _value.popularMoviesResults
-          : popularMoviesResults // ignore: cast_nullable_to_non_nullable
+      results: results == freezed
+          ? _value.results
+          : results // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
     ));
   }
@@ -66,7 +66,7 @@ abstract class _$$_HomeScreenDataCopyWith<$Res>
           _$_HomeScreenData value, $Res Function(_$_HomeScreenData) then) =
       __$$_HomeScreenDataCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: "results") List<dynamic> popularMoviesResults});
+  $Res call({@JsonKey(name: "results") List<dynamic> results});
 }
 
 /// @nodoc
@@ -82,12 +82,12 @@ class __$$_HomeScreenDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? popularMoviesResults = freezed,
+    Object? results = freezed,
   }) {
     return _then(_$_HomeScreenData(
-      popularMoviesResults: popularMoviesResults == freezed
-          ? _value._popularMoviesResults
-          : popularMoviesResults // ignore: cast_nullable_to_non_nullable
+      results: results == freezed
+          ? _value._results
+          : results // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
     ));
   }
@@ -97,24 +97,23 @@ class __$$_HomeScreenDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_HomeScreenData implements _HomeScreenData {
   const _$_HomeScreenData(
-      {@JsonKey(name: "results")
-          required final List<dynamic> popularMoviesResults})
-      : _popularMoviesResults = popularMoviesResults;
+      {@JsonKey(name: "results") required final List<dynamic> results})
+      : _results = results;
 
   factory _$_HomeScreenData.fromJson(Map<String, dynamic> json) =>
       _$$_HomeScreenDataFromJson(json);
 
-  final List<dynamic> _popularMoviesResults;
+  final List<dynamic> _results;
   @override
   @JsonKey(name: "results")
-  List<dynamic> get popularMoviesResults {
+  List<dynamic> get results {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_popularMoviesResults);
+    return EqualUnmodifiableListView(_results);
   }
 
   @override
   String toString() {
-    return 'HomeScreenData(popularMoviesResults: $popularMoviesResults)';
+    return 'HomeScreenData(results: $results)';
   }
 
   @override
@@ -122,14 +121,13 @@ class _$_HomeScreenData implements _HomeScreenData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HomeScreenData &&
-            const DeepCollectionEquality()
-                .equals(other._popularMoviesResults, _popularMoviesResults));
+            const DeepCollectionEquality().equals(other._results, _results));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_popularMoviesResults));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_results));
 
   @JsonKey(ignore: true)
   @override
@@ -146,8 +144,7 @@ class _$_HomeScreenData implements _HomeScreenData {
 
 abstract class _HomeScreenData implements HomeScreenData {
   const factory _HomeScreenData(
-          {@JsonKey(name: "results")
-              required final List<dynamic> popularMoviesResults}) =
+          {@JsonKey(name: "results") required final List<dynamic> results}) =
       _$_HomeScreenData;
 
   factory _HomeScreenData.fromJson(Map<String, dynamic> json) =
@@ -155,7 +152,7 @@ abstract class _HomeScreenData implements HomeScreenData {
 
   @override
   @JsonKey(name: "results")
-  List<dynamic> get popularMoviesResults;
+  List<dynamic> get results;
   @override
   @JsonKey(ignore: true)
   _$$_HomeScreenDataCopyWith<_$_HomeScreenData> get copyWith =>

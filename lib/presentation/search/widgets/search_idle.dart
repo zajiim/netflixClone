@@ -17,7 +17,7 @@ class SearchIdleWidget extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        SearchTextWidget(
+        const SearchTextWidget(
           title: 'Top Searches',
         ),
         Expanded(

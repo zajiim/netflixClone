@@ -4,8 +4,7 @@ import 'package:netflix_bloc/core/constants/strings.dart';
 import 'package:netflix_bloc/presentation/search/widgets/search_text_widget.dart';
 
 import '../../../application/search/search_bloc.dart';
-import '../../../core/styles/styles.dart';
-import 'main_card_poster_widget.dart';
+
 import 'search_result_list_widget.dart';
 
 class SearchResultsWidget extends StatelessWidget {
@@ -16,7 +15,7 @@ class SearchResultsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SearchTextWidget(
+        const SearchTextWidget(
           title: 'Movies and TV',
         ),
         const SizedBox(

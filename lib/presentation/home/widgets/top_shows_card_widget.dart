@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_bloc/presentation/common_widgets/main_card.dart';
+
 import 'package:netflix_bloc/presentation/home/widgets/number_card.dart';
 import 'package:netflix_bloc/presentation/home/widgets/title_widget.dart';
 

@@ -8,12 +8,12 @@ part of 'home.dart';
 
 _$_HomeScreenData _$$_HomeScreenDataFromJson(Map<String, dynamic> json) =>
     _$_HomeScreenData(
-      popularMoviesResults: json['results'] as List<dynamic>,
+      results: json['results'] as List<dynamic>,
     );
 
 Map<String, dynamic> _$$_HomeScreenDataToJson(_$_HomeScreenData instance) =>
     <String, dynamic>{
-      'results': instance.popularMoviesResults,
+      'results': instance.results,
     };
 
 _$_PopularMoviesResults _$$_PopularMoviesResultsFromJson(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -10,7 +12,10 @@ import 'package:netflix_bloc/presentation/home/widgets/main_screen_card_widget.d
 import 'package:netflix_bloc/presentation/home/widgets/title_card_widget.dart';
 import 'package:netflix_bloc/presentation/home/widgets/top_shows_card_widget.dart';
 
+import '../../application/downloads/downloads_bloc.dart';
 import '../../core/styles/styles.dart';
+
+Random random = Random();
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -21,7 +26,10 @@ class HomeScreen extends StatelessWidget {
       BlocProvider.of<HomeBloc>(context).add(
         const GetHomeSreenTrending(),
       );
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(const DownloadsEvent.getDownloadsImages());
     });
+
     return Scaffold(
       body: ValueListenableBuilder(
         valueListenable: scrollDirectionNotifier,
@@ -52,11 +60,7 @@ class HomeScreen extends StatelessWidget {
                             style: errorMessageStyle),
                       );
                     }
-                    final trendingNowMoviesList = state.trendingMoviesList
-                        .map(
-                            (items) => '$imageAppendUrl${items['poster_path']}')
-                        .toList();
-                    final trendingNowShowsList = state.trendingShowsList
+                    final trendingMoviesList = state.trendingMoviesList
                         .map(
                             (items) => '$imageAppendUrl${items['poster_path']}')
                         .toList();
@@ -70,15 +74,17 @@ class HomeScreen extends StatelessWidget {
                     final allTimePopularList = state.popularMoviesList
                         .map((item) => '$imageAppendUrl${item['poster_path']}')
                         .toList();
-                    final imageUrl = state.nowPlayingShowsList
-                        .map(
-                            (items) => '$imageAppendUrl${items['poster_path']}')
-                        .toList();
-                    print(imageUrl);
+
                     return ListView(
                       children: [
-                        MainScreenCard(
-                          imgUrl: imageUrl[0],
+                        BlocBuilder<DownloadsBloc, DownloadsState>(
+                          builder: (context, state) {
+                            final imageUrl =
+                                state.downloads[random.nextInt(10)].posterPath;
+                            print(imageUrl);
+                            return MainScreenCard(
+                                imgUrl: '$imageAppendUrl$imageUrl');
+                          },
                         ),
                         TitleCardWidget(
                           title: "Released in the past year",
@@ -88,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                           height: 15,
                         ),
                         TitleCardWidget(
-                          title: 'Trending Now',
+                          title: 'Now Playing',
                           posterList: nowPlayingMoviesList,
                         ),
                         const SizedBox(
@@ -102,15 +108,15 @@ class HomeScreen extends StatelessWidget {
                           height: 15,
                         ),
                         TitleCardWidget(
-                          title: 'Tense Dramas',
-                          posterList: nowPlayingMoviesList,
+                          title: 'Trending Now',
+                          posterList: upcomingMoviesList,
                         ),
                         const SizedBox(
                           height: 15,
                         ),
                         TitleCardWidget(
-                          title: 'South Indian Movies',
-                          posterList: trendingNowShowsList,
+                          title: 'Most Awaited',
+                          posterList: trendingMoviesList,
                         ),
                       ],
                     );

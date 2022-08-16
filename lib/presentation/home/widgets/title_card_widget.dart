@@ -5,11 +5,11 @@ import 'package:netflix_bloc/presentation/home/widgets/title_widget.dart';
 class TitleCardWidget extends StatelessWidget {
   final String title;
   final List<String> posterList;
-  
-  TitleCardWidget({
+
+  const TitleCardWidget({
     required this.title,
-    
-    Key? key, required this.posterList,
+    Key? key,
+    required this.posterList,
   }) : super(key: key);
 
   @override

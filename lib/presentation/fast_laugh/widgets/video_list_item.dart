@@ -39,7 +39,7 @@ class VideoListItem extends StatelessWidget {
     return Stack(
       children: [
         FastLaughVideoPlayerWidget(
-          onStateChanged: (bool) {},
+          onStateChanged: (_) {},
           videoUrl: videoUrl,
         ),
         Positioned(

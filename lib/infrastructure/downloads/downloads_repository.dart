@@ -22,7 +22,6 @@ class DownloadsRepository implements DownloadsService {
         final downloadsList = (response.data['results'] as List).map((items) {
           return Downloads.fromJson(items);
         }).toList();
-        print(downloadsList.toString());
 
         return Right(downloadsList);
       } else {

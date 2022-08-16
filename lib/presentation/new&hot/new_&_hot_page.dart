@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_bloc/application/new_and_hot/new_and_hot_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
-import 'package:netflix_bloc/presentation/common_widgets/title_bar.dart';
+
 import 'package:netflix_bloc/presentation/new&hot/widgets/coming_soon_widget.dart';
 import 'package:netflix_bloc/presentation/new&hot/widgets/everyones_watching_widget.dart';
 

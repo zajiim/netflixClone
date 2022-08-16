@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:netflix_bloc/core/failures/main_failures.dart';
+
 import 'package:netflix_bloc/domain/downloads/downloads_service.dart';
 import 'package:netflix_bloc/domain/downloads/models/downloads.dart';
 import 'package:netflix_bloc/domain/search/models/search.dart';

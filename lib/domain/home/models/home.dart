@@ -6,7 +6,7 @@ part 'home.freezed.dart';
 @freezed
 class HomeScreenData with _$HomeScreenData {
   const factory HomeScreenData({
-    @JsonKey(name: "results") required List popularMoviesResults,
+    @JsonKey(name: "results") required List results,
   }) = _HomeScreenData;
 
   factory HomeScreenData.fromJson(Map<String, dynamic> json) =>

@@ -5,7 +5,7 @@ import '../../../core/styles/styles.dart';
 import 'main_card_poster_widget.dart';
 
 class SearchResultListWidget extends StatelessWidget {
-  SearchResultListWidget({
+  const SearchResultListWidget({
     Key? key,
     required this.imgUrl,
     required this.tvShowName,
