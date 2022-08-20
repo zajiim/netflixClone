@@ -79,9 +79,8 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         BlocBuilder<DownloadsBloc, DownloadsState>(
                           builder: (context, state) {
-                            final imageUrl =
-                                state.downloads[random.nextInt(10)].posterPath;
-                            print(imageUrl);
+                            final imageUrl = state.downloads[0].posterPath;
+
                             return MainScreenCard(
                                 imgUrl: '$imageAppendUrl$imageUrl');
                           },
