@@ -33,10 +33,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<SearchBloc>()),
         BlocProvider(create: (context) => getIt<FastLaughBloc>()),
         BlocProvider(create: (context) => getIt<NewAndHotBloc>()),
-       BlocProvider(create: (context) => getIt<HomeBloc>()),
+        BlocProvider(create: (context) => getIt<HomeBloc>()),
       ],
       child: MaterialApp(
         theme: ThemeData(
+            useMaterial3: true,
             appBarTheme: const AppBarTheme(color: Colors.transparent),
             scaffoldBackgroundColor: kBackgroundColor,
             fontFamily: GoogleFonts.cabin().fontFamily,

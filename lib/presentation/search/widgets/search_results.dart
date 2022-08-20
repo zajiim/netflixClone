@@ -62,7 +62,8 @@ class SearchResultsWidget extends StatelessWidget {
                   return SearchResultListWidget(
                     imgUrl: (tvShows.posterPath != null)
                         ? '$imageAppendUrl${tvShows.posterPath}'
-                        : 'https://w7.pngwing.com/pngs/871/8/png-transparent-computer-icons-error-triangle-icon-angle-triangle-black-thumbnail.png',
+                        : 'https://w7.pngwing.com/pngs/349/105/png-transparent-false-error-missing-absent-x-red-cross-letter-circle-gui.png',
+                    // 'https://w7.pngwing.com/pngs/871/8/png-transparent-computer-icons-error-triangle-icon-angle-triangle-black-thumbnail.png',
                     releaseDate: tvShows.releaseDate ?? 'No data found',
                     overview: tvShows.overview ?? 'No data found',
                     tvShowName: tvShows.name ?? 'No data found',

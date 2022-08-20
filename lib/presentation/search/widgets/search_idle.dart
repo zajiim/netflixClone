@@ -25,7 +25,10 @@ class SearchIdleWidget extends StatelessWidget {
             builder: (context, state) {
               if (state.isLoading) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: kNetflixRed,
+                  ),
                 );
               } else if (state.isError) {
                 return const Center(

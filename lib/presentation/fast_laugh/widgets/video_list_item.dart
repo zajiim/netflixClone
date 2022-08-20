@@ -52,20 +52,6 @@ class VideoListItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                //   child: CircleAvatar(
-                //     backgroundColor: kBackgroundColor.withOpacity(0.2),
-                //     radius: 25,
-                //     child: IconButton(
-                //       onPressed: () {},
-                //       icon: const Icon(
-                //         Icons.volume_off,
-                //         color: kWhiteColor,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 Column(
                   children: [
                     Padding(
@@ -144,7 +130,8 @@ class _FastLaughVideoPlayerWidgetState
                 child: VideoPlayer(_videoPlayerController))
             : const Center(
                 child: CircularProgressIndicator(
-                  strokeWidth: 6.0,
+                  strokeWidth: 2,
+                  color: kNetflixRed,
                 ),
               ),
       ),

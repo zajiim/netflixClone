@@ -6,6 +6,7 @@ import 'package:netflix_bloc/core/constants/strings.dart';
 import 'package:netflix_bloc/presentation/new&hot/widgets/individual_comingsoon_widget.dart';
 
 import '../../../application/new_and_hot/new_and_hot_bloc.dart';
+import '../../../core/colors/colors.dart';
 
 class ComingSoonWidget extends StatelessWidget {
   const ComingSoonWidget({Key? key}) : super(key: key);
@@ -21,7 +22,8 @@ class ComingSoonWidget extends StatelessWidget {
         } else if (state.isLoading) {
           return const Center(
             child: CircularProgressIndicator(
-              strokeWidth: 6,
+              strokeWidth: 2,
+              color: kNetflixRed,
             ),
           );
         } else if (state.comingSoonList.isEmpty) {

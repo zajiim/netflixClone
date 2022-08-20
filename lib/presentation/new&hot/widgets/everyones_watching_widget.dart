@@ -7,6 +7,7 @@ import 'package:netflix_bloc/core/constants/strings.dart';
 import 'package:netflix_bloc/presentation/new&hot/widgets/individual_everyones_watching_widget.dart';
 
 import '../../../application/new_and_hot/new_and_hot_bloc.dart';
+import '../../../core/colors/colors.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
   const EveryonesWatchingWidget({
@@ -26,7 +27,8 @@ class EveryonesWatchingWidget extends StatelessWidget {
           } else if (state.isLoading) {
             return const Center(
               child: CircularProgressIndicator(
-                strokeWidth: 6,
+                strokeWidth: 2,
+                color: kNetflixRed,
               ),
             );
           } else if (state.everyOnesWatchingList.isEmpty) {

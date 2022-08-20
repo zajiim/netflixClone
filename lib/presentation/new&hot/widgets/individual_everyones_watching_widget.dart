@@ -41,6 +41,7 @@ class IndividualEveryonesWatching extends StatelessWidget {
           children: [
             SizedBox(
               height: 180,
+              width: double.infinity,
               child: Image.network(
                 imgUrl.toString(),
                 fit: BoxFit.contain,

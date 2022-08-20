@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
                       return const Center(
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
+                          color: kNetflixRed,
                         ),
                       );
                     } else if (state.isError) {
@@ -145,38 +146,42 @@ class HomeScreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        'assets/images/netflix_logo.png',
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 15, bottom: 15),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          'assets/images/netflix_logo.png',
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const Spacer(),
-                                const Icon(
-                                  Icons.cast,
-                                  color: kWhiteColor,
-                                ),
-                                const SizedBox(
-                                  width: 15.0,
-                                ),
-                                Container(
-                                  height: 25.0,
-                                  width: 25.0,
-                                  decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/avatar.png',
-                                    ),
-                                  )),
-                                ),
-                              ],
+                                  const Spacer(),
+                                  const Icon(
+                                    Icons.cast,
+                                    color: kWhiteColor,
+                                  ),
+                                  const SizedBox(
+                                    width: 15.0,
+                                  ),
+                                  Container(
+                                    height: 25.0,
+                                    width: 25.0,
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/avatar.png',
+                                      ),
+                                    )),
+                                  ),
+                                ],
+                              ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

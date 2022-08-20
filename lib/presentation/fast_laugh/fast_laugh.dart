@@ -4,6 +4,8 @@ import 'package:netflix_bloc/application/fast_laugh/fast_laugh_bloc.dart';
 
 import 'package:netflix_bloc/presentation/fast_laugh/widgets/video_list_item.dart';
 
+import '../../core/colors/colors.dart';
+
 class FastLaughScreen extends StatelessWidget {
   const FastLaughScreen({Key? key}) : super(key: key);
 
@@ -19,7 +21,8 @@ class FastLaughScreen extends StatelessWidget {
             if (state.isLoading) {
               return const Center(
                   child: CircularProgressIndicator(
-                strokeWidth: 6,
+                strokeWidth: 2,
+                color: kNetflixRed,
               ));
             } else if (state.isError) {
               return const Center(child: Text('Error while getting data'));

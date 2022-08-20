@@ -45,7 +45,8 @@ class MiddleSection extends StatelessWidget {
               child: state.isLoading
                   ? const Center(
                       child: CircularProgressIndicator(
-                      strokeWidth: 6,
+                        color: kNetflixRed,
+                      strokeWidth: 1,
                     ))
                   : Stack(
                       alignment: Alignment.center,

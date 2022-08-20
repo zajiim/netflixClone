@@ -22,6 +22,7 @@ class ButtonSection extends StatelessWidget {
             child: const Text(
               'Set up',
               style: TextStyle(
+                color: kWhiteColor,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
