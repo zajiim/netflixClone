@@ -14,6 +14,7 @@ import 'package:netflix_bloc/presentation/home/widgets/top_shows_card_widget.dar
 
 import '../../application/downloads/downloads_bloc.dart';
 import '../../core/styles/styles.dart';
+import 'widgets/popular_people_card_widget.dart';
 
 Random random = Random();
 
@@ -75,6 +76,14 @@ class HomeScreen extends StatelessWidget {
                         .map((item) => '$imageAppendUrl${item['poster_path']}')
                         .toList();
 
+                    final popularPeopleList = state.trendingPeopleList
+                        .map((items) =>
+                            '$imageAppendUrl${items['profile_path']}')
+                        .toList();
+                    final popularPeopleNameList = state.trendingPeopleList
+                        .map((names) => '${names['name']}')
+                        .toList();
+
                     return ListView(
                       children: [
                         BlocBuilder<DownloadsBloc, DownloadsState>(
@@ -91,6 +100,11 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(
                           height: 15,
+                        ),
+                        PopularPeopleCardWidget(
+                          title: 'Popular People',
+                          posterList: popularPeopleList,
+                          nameList: popularPeopleNameList,
                         ),
                         TitleCardWidget(
                           title: 'Now Playing',

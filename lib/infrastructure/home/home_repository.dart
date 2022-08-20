@@ -58,6 +58,8 @@
 //   }
 // }
 
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_bloc/core/failures/main_failures.dart';
@@ -139,6 +141,23 @@ class HomeRepository implements HomeService {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final popularTvShowsResult = HomeScreenData.fromJson(response.data);
         return Right(popularTvShowsResult);
+      } else {
+        return const Left(MainFailures.serverFailures());
+      }
+    } catch (_) {
+      return const Left(MainFailures.clientFailures());
+    }
+  }
+
+  @override
+  Future<Either<MainFailures, HomeScreenData>> getPopularPeople() async {
+    try {
+      final response = await Dio(BaseOptions()).get(ApiEndPoints.popularPeople);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final popularPeopleResult = HomeScreenData.fromJson(response.data);
+        log(popularPeopleResult.toString());
+        return Right(popularPeopleResult);
       } else {
         return const Left(MainFailures.serverFailures());
       }

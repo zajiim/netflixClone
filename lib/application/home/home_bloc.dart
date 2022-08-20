@@ -3,8 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_bloc/domain/home/home_service.dart';
 
-
-
 part 'home_event.dart';
 part 'home_state.dart';
 part 'home_bloc.freezed.dart';
@@ -36,6 +34,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final _nowPlayingMoviesResult =
           await _homeServiceData.getNowPlayingMovies();
       final _allTimePopularResult = await _homeServiceData.getPopularMovies();
+      final _popularPeopleResult = await _homeServiceData.getPopularPeople();
 
       final _state1 = _trendingMoviesResult.fold((failure) {
         return HomeState(
@@ -45,6 +44,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             upcomingMoviesList: [],
             nowPlayingShowsList: [],
             popularMoviesList: [],
+            trendingPeopleList: [],
             isLoading: false,
             isError: true);
       }, (success) {
@@ -55,6 +55,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           upcomingMoviesList: state.upcomingMoviesList,
           nowPlayingShowsList: state.nowPlayingShowsList,
           popularMoviesList: state.popularMoviesList,
+          trendingPeopleList: state.trendingPeopleList,
           isLoading: false,
           isError: false,
         );
@@ -69,6 +70,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           upcomingMoviesList: [],
           nowPlayingShowsList: [],
           popularMoviesList: [],
+          trendingPeopleList: [],
           isLoading: false,
           isError: true,
         );
@@ -80,6 +82,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           upcomingMoviesList: state.upcomingMoviesList,
           popularMoviesList: state.popularMoviesList,
           nowPlayingShowsList: state.nowPlayingShowsList,
+          trendingPeopleList: state.trendingPeopleList,
           isLoading: false,
           isError: false,
         );
@@ -94,6 +97,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           popularMoviesList: [],
           upcomingMoviesList: [],
           nowPlayingShowsList: [],
+          trendingPeopleList: [],
           isLoading: false,
           isError: true,
         );
@@ -105,6 +109,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           popularMoviesList: state.popularMoviesList,
           upcomingMoviesList: success.results,
           nowPlayingShowsList: state.nowPlayingShowsList,
+          trendingPeopleList: state.trendingPeopleList,
           isLoading: false,
           isError: false,
         );
@@ -120,6 +125,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           popularMoviesList: [],
           upcomingMoviesList: [],
           nowPlayingShowsList: [],
+          trendingPeopleList: [],
           isLoading: false,
           isError: true,
         );
@@ -131,6 +137,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           popularMoviesList: state.popularMoviesList,
           upcomingMoviesList: state.upcomingMoviesList,
           nowPlayingShowsList: success.results,
+          trendingPeopleList: state.trendingPeopleList,
           isLoading: false,
           isError: false,
         );
@@ -146,6 +153,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           popularMoviesList: [],
           upcomingMoviesList: [],
           nowPlayingShowsList: [],
+          trendingPeopleList: [],
           isLoading: false,
           isError: true,
         );
@@ -157,12 +165,41 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           popularMoviesList: success.results,
           upcomingMoviesList: state.upcomingMoviesList,
           nowPlayingShowsList: state.nowPlayingShowsList,
+          trendingPeopleList: state.trendingPeopleList,
           isLoading: false,
           isError: false,
         );
       });
 
       emit(_state5);
+
+      final _state6 = _popularPeopleResult.fold((failure) {
+        return HomeState(
+          stateId: DateTime.now().millisecondsSinceEpoch.toString(),
+          trendingShowsList: [],
+          trendingMoviesList: [],
+          popularMoviesList: [],
+          upcomingMoviesList: [],
+          nowPlayingShowsList: [],
+          trendingPeopleList: [],
+          isLoading: false,
+          isError: true,
+        );
+      }, (success) {
+        return HomeState(
+          stateId: DateTime.now().millisecondsSinceEpoch.toString(),
+          trendingShowsList: state.trendingShowsList,
+          trendingMoviesList: state.trendingMoviesList,
+          popularMoviesList: success.results,
+          upcomingMoviesList: state.upcomingMoviesList,
+          nowPlayingShowsList: state.nowPlayingShowsList,
+          trendingPeopleList: success.results,
+          isLoading: false,
+          isError: false,
+        );
+      });
+
+      emit(_state6);
     });
   }
 }

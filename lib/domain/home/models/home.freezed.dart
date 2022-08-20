@@ -727,3 +727,168 @@ abstract class _TopRatedResults implements TopRatedResults {
   _$$_TopRatedResultsCopyWith<_$_TopRatedResults> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+TopPeople _$TopPeopleFromJson(Map<String, dynamic> json) {
+  return _TopPeople.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TopPeople {
+  @JsonKey(name: "name")
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "profile_path")
+  String get profileImagePath => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TopPeopleCopyWith<TopPeople> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TopPeopleCopyWith<$Res> {
+  factory $TopPeopleCopyWith(TopPeople value, $Res Function(TopPeople) then) =
+      _$TopPeopleCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: "name") String? name,
+      @JsonKey(name: "profile_path") String profileImagePath});
+}
+
+/// @nodoc
+class _$TopPeopleCopyWithImpl<$Res> implements $TopPeopleCopyWith<$Res> {
+  _$TopPeopleCopyWithImpl(this._value, this._then);
+
+  final TopPeople _value;
+  // ignore: unused_field
+  final $Res Function(TopPeople) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? profileImagePath = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImagePath: profileImagePath == freezed
+          ? _value.profileImagePath
+          : profileImagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_TopPeopleCopyWith<$Res> implements $TopPeopleCopyWith<$Res> {
+  factory _$$_TopPeopleCopyWith(
+          _$_TopPeople value, $Res Function(_$_TopPeople) then) =
+      __$$_TopPeopleCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(name: "name") String? name,
+      @JsonKey(name: "profile_path") String profileImagePath});
+}
+
+/// @nodoc
+class __$$_TopPeopleCopyWithImpl<$Res> extends _$TopPeopleCopyWithImpl<$Res>
+    implements _$$_TopPeopleCopyWith<$Res> {
+  __$$_TopPeopleCopyWithImpl(
+      _$_TopPeople _value, $Res Function(_$_TopPeople) _then)
+      : super(_value, (v) => _then(v as _$_TopPeople));
+
+  @override
+  _$_TopPeople get _value => super._value as _$_TopPeople;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? profileImagePath = freezed,
+  }) {
+    return _then(_$_TopPeople(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImagePath: profileImagePath == freezed
+          ? _value.profileImagePath
+          : profileImagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TopPeople implements _TopPeople {
+  const _$_TopPeople(
+      {@JsonKey(name: "name") required this.name,
+      @JsonKey(name: "profile_path") required this.profileImagePath});
+
+  factory _$_TopPeople.fromJson(Map<String, dynamic> json) =>
+      _$$_TopPeopleFromJson(json);
+
+  @override
+  @JsonKey(name: "name")
+  final String? name;
+  @override
+  @JsonKey(name: "profile_path")
+  final String profileImagePath;
+
+  @override
+  String toString() {
+    return 'TopPeople(name: $name, profileImagePath: $profileImagePath)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TopPeople &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.profileImagePath, profileImagePath));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(profileImagePath));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_TopPeopleCopyWith<_$_TopPeople> get copyWith =>
+      __$$_TopPeopleCopyWithImpl<_$_TopPeople>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TopPeopleToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TopPeople implements TopPeople {
+  const factory _TopPeople(
+      {@JsonKey(name: "name")
+          required final String? name,
+      @JsonKey(name: "profile_path")
+          required final String profileImagePath}) = _$_TopPeople;
+
+  factory _TopPeople.fromJson(Map<String, dynamic> json) =
+      _$_TopPeople.fromJson;
+
+  @override
+  @JsonKey(name: "name")
+  String? get name;
+  @override
+  @JsonKey(name: "profile_path")
+  String get profileImagePath;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TopPeopleCopyWith<_$_TopPeople> get copyWith =>
+      throw _privateConstructorUsedError;
+}

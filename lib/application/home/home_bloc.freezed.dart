@@ -173,6 +173,7 @@ mixin _$HomeState {
   List<dynamic> get upcomingMoviesList => throw _privateConstructorUsedError;
   List<dynamic> get nowPlayingShowsList => throw _privateConstructorUsedError;
   List<dynamic> get trendingMoviesList => throw _privateConstructorUsedError;
+  List<dynamic> get trendingPeopleList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
@@ -192,6 +193,7 @@ abstract class $HomeStateCopyWith<$Res> {
       List<dynamic> upcomingMoviesList,
       List<dynamic> nowPlayingShowsList,
       List<dynamic> trendingMoviesList,
+      List<dynamic> trendingPeopleList,
       bool isLoading,
       bool isError});
 }
@@ -212,6 +214,7 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
     Object? upcomingMoviesList = freezed,
     Object? nowPlayingShowsList = freezed,
     Object? trendingMoviesList = freezed,
+    Object? trendingPeopleList = freezed,
     Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
@@ -240,6 +243,10 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.trendingMoviesList
           : trendingMoviesList // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      trendingPeopleList: trendingPeopleList == freezed
+          ? _value.trendingPeopleList
+          : trendingPeopleList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -265,6 +272,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       List<dynamic> upcomingMoviesList,
       List<dynamic> nowPlayingShowsList,
       List<dynamic> trendingMoviesList,
+      List<dynamic> trendingPeopleList,
       bool isLoading,
       bool isError});
 }
@@ -286,6 +294,7 @@ class __$$_InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     Object? upcomingMoviesList = freezed,
     Object? nowPlayingShowsList = freezed,
     Object? trendingMoviesList = freezed,
+    Object? trendingPeopleList = freezed,
     Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
@@ -314,6 +323,10 @@ class __$$_InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value._trendingMoviesList
           : trendingMoviesList // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      trendingPeopleList: trendingPeopleList == freezed
+          ? _value._trendingPeopleList
+          : trendingPeopleList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -336,13 +349,15 @@ class _$_Initial implements _Initial {
       required final List<dynamic> upcomingMoviesList,
       required final List<dynamic> nowPlayingShowsList,
       required final List<dynamic> trendingMoviesList,
+      required final List<dynamic> trendingPeopleList,
       required this.isLoading,
       required this.isError})
       : _trendingShowsList = trendingShowsList,
         _popularMoviesList = popularMoviesList,
         _upcomingMoviesList = upcomingMoviesList,
         _nowPlayingShowsList = nowPlayingShowsList,
-        _trendingMoviesList = trendingMoviesList;
+        _trendingMoviesList = trendingMoviesList,
+        _trendingPeopleList = trendingPeopleList;
 
   @override
   final String stateId;
@@ -383,6 +398,13 @@ class _$_Initial implements _Initial {
     return EqualUnmodifiableListView(_trendingMoviesList);
   }
 
+  final List<dynamic> _trendingPeopleList;
+  @override
+  List<dynamic> get trendingPeopleList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trendingPeopleList);
+  }
+
   @override
   final bool isLoading;
   @override
@@ -390,7 +412,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'HomeState(stateId: $stateId, trendingShowsList: $trendingShowsList, popularMoviesList: $popularMoviesList, upcomingMoviesList: $upcomingMoviesList, nowPlayingShowsList: $nowPlayingShowsList, trendingMoviesList: $trendingMoviesList, isLoading: $isLoading, isError: $isError)';
+    return 'HomeState(stateId: $stateId, trendingShowsList: $trendingShowsList, popularMoviesList: $popularMoviesList, upcomingMoviesList: $upcomingMoviesList, nowPlayingShowsList: $nowPlayingShowsList, trendingMoviesList: $trendingMoviesList, trendingPeopleList: $trendingPeopleList, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -409,6 +431,8 @@ class _$_Initial implements _Initial {
                 .equals(other._nowPlayingShowsList, _nowPlayingShowsList) &&
             const DeepCollectionEquality()
                 .equals(other._trendingMoviesList, _trendingMoviesList) &&
+            const DeepCollectionEquality()
+                .equals(other._trendingPeopleList, _trendingPeopleList) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.isError, isError));
   }
@@ -422,6 +446,7 @@ class _$_Initial implements _Initial {
       const DeepCollectionEquality().hash(_upcomingMoviesList),
       const DeepCollectionEquality().hash(_nowPlayingShowsList),
       const DeepCollectionEquality().hash(_trendingMoviesList),
+      const DeepCollectionEquality().hash(_trendingPeopleList),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isError));
 
@@ -439,6 +464,7 @@ abstract class _Initial implements HomeState {
       required final List<dynamic> upcomingMoviesList,
       required final List<dynamic> nowPlayingShowsList,
       required final List<dynamic> trendingMoviesList,
+      required final List<dynamic> trendingPeopleList,
       required final bool isLoading,
       required final bool isError}) = _$_Initial;
 
@@ -454,6 +480,8 @@ abstract class _Initial implements HomeState {
   List<dynamic> get nowPlayingShowsList;
   @override
   List<dynamic> get trendingMoviesList;
+  @override
+  List<dynamic> get trendingPeopleList;
   @override
   bool get isLoading;
   @override

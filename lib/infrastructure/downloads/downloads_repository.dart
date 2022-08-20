@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -18,7 +18,7 @@ class DownloadsRepository implements DownloadsService {
           await Dio(BaseOptions()).get(ApiEndPoints.downloads);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        log(response.data.toString());
+       
         final downloadsList = (response.data['results'] as List).map((items) {
           return Downloads.fromJson(items);
         }).toList();
@@ -28,7 +28,7 @@ class DownloadsRepository implements DownloadsService {
         return const Left(MainFailures.serverFailures());
       }
     } catch (e) {
-      log(e.toString());
+      
       return const Left(MainFailures.clientFailures());
     }
   }

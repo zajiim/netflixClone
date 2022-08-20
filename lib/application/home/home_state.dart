@@ -10,6 +10,7 @@ class HomeState with _$HomeState {
     required List<dynamic> upcomingMoviesList,
     required List<dynamic> nowPlayingShowsList,
     required List<dynamic> trendingMoviesList,
+    required List<dynamic> trendingPeopleList,
     required bool isLoading,
     required bool isError,
   }) = _Initial;
@@ -21,6 +22,7 @@ class HomeState with _$HomeState {
         popularMoviesList: [],
         upcomingMoviesList: [],
         nowPlayingShowsList: [],
+        trendingPeopleList: [],
         isLoading: false,
         isError: false,
       );

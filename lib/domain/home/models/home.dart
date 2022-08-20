@@ -52,3 +52,13 @@ class TopRatedResults with _$TopRatedResults{
 
   factory TopRatedResults.fromJson(Map<String, dynamic> json) => _$TopRatedResultsFromJson(json);
 }
+
+@freezed
+class TopPeople with _$TopPeople{
+  const factory TopPeople({
+    @JsonKey(name: "name") required String? name,
+    @JsonKey(name: "profile_path") required String profileImagePath,
+  }) = _TopPeople;
+
+  factory TopPeople.fromJson(Map<String, dynamic> json) => _$TopPeopleFromJson(json);
+}

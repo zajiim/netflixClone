@@ -60,3 +60,14 @@ Map<String, dynamic> _$$_TopRatedResultsToJson(_$_TopRatedResults instance) =>
     <String, dynamic>{
       'poster_path': instance.posterPath,
     };
+
+_$_TopPeople _$$_TopPeopleFromJson(Map<String, dynamic> json) => _$_TopPeople(
+      name: json['name'] as String?,
+      profileImagePath: json['profile_path'] as String,
+    );
+
+Map<String, dynamic> _$$_TopPeopleToJson(_$_TopPeople instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'profile_path': instance.profileImagePath,
+    };

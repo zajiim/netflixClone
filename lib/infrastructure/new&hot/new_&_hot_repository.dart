@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -23,7 +23,7 @@ class NewAndHotRepository implements NewAndHotService {
         return const Left(MainFailures.serverFailures());
       }
     } catch (e) {
-      log(e.toString());
+      
       return const Left(MainFailures.clientFailures());
     }
   }
@@ -33,7 +33,7 @@ class NewAndHotRepository implements NewAndHotService {
     try {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.newAndHotMovies);
-      log(response.data.toString());
+     
       if (response.statusCode == 200 || response.statusCode == 201) {
         final newHotMoviesResult = NewHot.fromJson(response.data);
         return Right(newHotMoviesResult);
@@ -41,7 +41,7 @@ class NewAndHotRepository implements NewAndHotService {
         return const Left(MainFailures.serverFailures());
       }
     } catch (e) {
-      log(e.toString());
+     
       return const Left(MainFailures.clientFailures());
     }
   }

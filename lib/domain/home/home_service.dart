@@ -9,5 +9,5 @@ abstract class HomeService {
   Future<Either<MainFailures, HomeScreenData>> getNowPlayingMovies();
   Future<Either<MainFailures, HomeScreenData>> getTopRatedMovies();
   Future<Either<MainFailures, HomeScreenData>> getTopRatedShows();
-
+  Future<Either<MainFailures, HomeScreenData>> getPopularPeople();
 }
