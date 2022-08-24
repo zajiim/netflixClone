@@ -190,7 +190,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           trendingShowsList: state.trendingShowsList,
           trendingMoviesList: state.trendingMoviesList,
-          popularMoviesList: success.results,
+          popularMoviesList: state.popularMoviesList,
           upcomingMoviesList: state.upcomingMoviesList,
           nowPlayingShowsList: state.nowPlayingShowsList,
           trendingPeopleList: success.results,

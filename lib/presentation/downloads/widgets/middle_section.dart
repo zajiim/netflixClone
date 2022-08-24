@@ -46,7 +46,7 @@ class MiddleSection extends StatelessWidget {
                   ? const Center(
                       child: CircularProgressIndicator(
                         color: kNetflixRed,
-                      strokeWidth: 1,
+                      strokeWidth: 2,
                     ))
                   : Stack(
                       alignment: Alignment.center,
@@ -69,7 +69,10 @@ class MiddleSection extends StatelessWidget {
                                   screenWidth.width * 0.60,
                                 ),
                               )
-                            : const CircularProgressIndicator(),
+                            : const CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: kNetflixRed,
+                            ),
                         (state.downloads.isNotEmpty)
                             ? DownloadsImageWidget(
                                 imageList:
@@ -97,7 +100,10 @@ class MiddleSection extends StatelessWidget {
                                   screenWidth.width * 0.65,
                                 ),
                               )
-                            : const CircularProgressIndicator(),
+                            : const CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: kNetflixRed,
+                            ),
                       ],
                     ),
             );

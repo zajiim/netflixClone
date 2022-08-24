@@ -13,7 +13,9 @@ import 'package:netflix_bloc/presentation/home/widgets/title_card_widget.dart';
 import 'package:netflix_bloc/presentation/home/widgets/top_shows_card_widget.dart';
 
 import '../../application/downloads/downloads_bloc.dart';
+import '../../application/search/search_bloc.dart';
 import '../../core/styles/styles.dart';
+import 'widgets/netflix_originals.dart';
 import 'widgets/popular_people_card_widget.dart';
 
 Random random = Random();
@@ -27,8 +29,6 @@ class HomeScreen extends StatelessWidget {
       BlocProvider.of<HomeBloc>(context).add(
         const GetHomeSreenTrending(),
       );
-      BlocProvider.of<DownloadsBloc>(context)
-          .add(const DownloadsEvent.getDownloadsImages());
     });
 
     return Scaffold(
@@ -66,6 +66,11 @@ class HomeScreen extends StatelessWidget {
                         .map(
                             (items) => '$imageAppendUrl${items['poster_path']}')
                         .toList();
+                    final netflixOriginalsList = state
+                        .trendingMoviesList.reversed
+                        .map(
+                            (items) => '$imageAppendUrl${items['poster_path']}')
+                        .toList();
 
                     final upcomingMoviesList = state.upcomingMoviesList
                         .map((item) => '$imageAppendUrl${item['poster_path']}')
@@ -87,14 +92,8 @@ class HomeScreen extends StatelessWidget {
 
                     return ListView(
                       children: [
-                        BlocBuilder<DownloadsBloc, DownloadsState>(
-                          builder: (context, state) {
-                            final imageUrl = state.downloads[0].posterPath;
-
-                            return MainScreenCard(
-                                imgUrl: '$imageAppendUrl$imageUrl');
-                          },
-                        ),
+                        MainScreenCard(
+                            imgUrl: nowPlayingMoviesList[0].toString()),
                         TitleCardWidget(
                           title: "Released in the past year",
                           posterList: upcomingMoviesList,
@@ -110,6 +109,11 @@ class HomeScreen extends StatelessWidget {
                         TitleCardWidget(
                           title: 'Now Playing',
                           posterList: nowPlayingMoviesList,
+                        ),
+                        NetflixOriginalsWidget(
+                          width: 250,
+                          title: 'Netflix Originals',
+                          posterList: netflixOriginalsList,
                         ),
                         const SizedBox(
                           height: 15,
