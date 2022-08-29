@@ -45,14 +45,16 @@ class IndividualComingSoonWidget extends StatelessWidget {
               Text(
                 month.toString(),
                 style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600,
-                    ),
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               Text(
                 date.toString(),
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                ),
               )
             ],
           ),
@@ -112,6 +114,7 @@ class IndividualComingSoonWidget extends StatelessWidget {
               // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
                     width: 200,
@@ -132,8 +135,11 @@ class IndividualComingSoonWidget extends StatelessWidget {
                   Expanded(
                     child: SideButtons(
                       icon: Icons.notifications_outlined,
-                      title: 'Remind Me',
+                      title: 'Notify',
                     ),
+                  ),
+                  const SizedBox(
+                    width: 5,
                   ),
                   SideButtons(
                     icon: Icons.info_outline,

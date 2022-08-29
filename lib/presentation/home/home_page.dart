@@ -12,8 +12,6 @@ import 'package:netflix_bloc/presentation/home/widgets/main_screen_card_widget.d
 import 'package:netflix_bloc/presentation/home/widgets/title_card_widget.dart';
 import 'package:netflix_bloc/presentation/home/widgets/top_shows_card_widget.dart';
 
-import '../../application/downloads/downloads_bloc.dart';
-import '../../application/search/search_bloc.dart';
 import '../../core/styles/styles.dart';
 import 'widgets/netflix_originals.dart';
 import 'widgets/popular_people_card_widget.dart';

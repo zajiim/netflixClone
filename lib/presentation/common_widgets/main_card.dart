@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_bloc/presentation/home/details/details_screen.dart';
 
 class MainCardWidget extends StatelessWidget {
   String imgUrl;
@@ -10,15 +11,25 @@ class MainCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Container(
-        width: width,
-        height: 220,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: NetworkImage(imgUrl.toString()),
+      child: InkWell(
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailsScreen(
+              imgUrl: imgUrl,
+            ),
           ),
-          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Container(
+          width: width,
+          height: 220,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(imgUrl.toString()),
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
         ),
       ),
     );
