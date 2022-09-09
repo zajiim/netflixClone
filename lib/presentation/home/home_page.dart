@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_bloc/application/home/home_bloc.dart';
 import 'package:netflix_bloc/core/colors/colors.dart';
@@ -91,7 +91,10 @@ class HomeScreen extends StatelessWidget {
                     return ListView(
                       children: [
                         MainScreenCard(
-                            imgUrl: nowPlayingMoviesList[0].toString()),
+                            imgUrl: (nowPlayingMoviesList.isEmpty)
+                                ? '$imageAppendUrl'
+                                    'jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg'
+                                : nowPlayingMoviesList[0].toString()),
                         TitleCardWidget(
                           title: "Released in the past year",
                           posterList: upcomingMoviesList,
