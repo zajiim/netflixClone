@@ -112,43 +112,45 @@ class IndividualComingSoonWidget extends StatelessWidget {
               // const SizedBox(
               //   height: 20,
               // ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 200,
-                    child: Text(
-                      showName.toString(),
-                      style: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 200,
+                      child: Text(
+                        showName.toString(),
+                        style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  const Spacer(),
-                  // const SizedBox(
-                  //   width: 20,
-                  // ),
-                  Expanded(
-                    child: SideButtons(
-                      icon: Icons.notifications_outlined,
-                      title: 'Notify',
+                    const Spacer(),
+                    // const SizedBox(
+                    //   width: 20,
+                    // ),
+                    Expanded(
+                      child: SideButtons(
+                        icon: Icons.notifications_outlined,
+                        title: 'Notify',
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  SideButtons(
-                    icon: Icons.info_outline,
-                    title: 'Info',
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                ],
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    SideButtons(
+                      icon: Icons.info_outline,
+                      title: 'Info',
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -188,7 +190,7 @@ class IndividualComingSoonWidget extends StatelessWidget {
                   Text(
                     showName.toString(),
                     style: const TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.w700,
                     ),
                   ),

@@ -70,6 +70,7 @@ class ComingSoonWidget extends StatelessWidget {
               );
             }),
             itemCount: state.comingSoonList.length,
+           
           );
         }
       },
