@@ -1,0 +1,7 @@
+flutter_native_splash:
+  color: "#000000"
+  image: assets/images/netflix_logo.png
+  # color_dark: "#000000"
+  # image_dark: assets/images/netflix_logo.png
+  android: true
+  ios: true
