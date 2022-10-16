@@ -77,6 +77,7 @@ class HomeRepository implements HomeService {
           await Dio(BaseOptions()).get(ApiEndPoints.nowPlayingMovies);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final nowPlayingMoviesResult = HomeScreenData.fromJson(response.data);
+
         return Right(nowPlayingMoviesResult);
       } else {
         return const Left(MainFailures.serverFailures());
@@ -109,6 +110,7 @@ class HomeRepository implements HomeService {
           await Dio(BaseOptions()).get(ApiEndPoints.upcomingMovies);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final upcomingMoviesResult = HomeScreenData.fromJson(response.data);
+        print("Result from console $upcomingMoviesResult");
         return Right(upcomingMoviesResult);
       } else {
         return const Left(MainFailures.serverFailures());

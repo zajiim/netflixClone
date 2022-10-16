@@ -5,11 +5,16 @@ import 'package:netflix_bloc/presentation/home/widgets/title_widget.dart';
 class TitleCardWidget extends StatelessWidget {
   final String title;
   final List<String> posterList;
+  final List<dynamic> titleList;
+  final List<dynamic> overviewList;
+  final List<dynamic> releaseDateList;
+  final List<dynamic> backdropList;
 
   const TitleCardWidget({
     required this.title,
     Key? key,
     required this.posterList,
+    required this.titleList, required this.overviewList, required this.releaseDateList, required this.backdropList,
   }) : super(key: key);
 
   @override
@@ -30,7 +35,11 @@ class TitleCardWidget extends StatelessWidget {
               children: List.generate(
                 posterList.length,
                 (index) => MainCardWidget(
+                  releaseDate: releaseDateList[index],
                   imgUrl: posterList[index],
+                  title: titleList[index],
+                  overview: overviewList[index],
+                  backdropUrl: backdropList[index]
                 ),
               ),
             ),

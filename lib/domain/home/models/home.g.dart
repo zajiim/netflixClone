@@ -20,12 +20,16 @@ _$_PopularMoviesResults _$$_PopularMoviesResultsFromJson(
         Map<String, dynamic> json) =>
     _$_PopularMoviesResults(
       posterPath: json['poster_path'] as String?,
+      overview: json['overview'] as String?,
+      backdropPath: json['backdrop_path'] as String?,
     );
 
 Map<String, dynamic> _$$_PopularMoviesResultsToJson(
         _$_PopularMoviesResults instance) =>
     <String, dynamic>{
       'poster_path': instance.posterPath,
+      'overview': instance.overview,
+      'backdrop_path': instance.backdropPath,
     };
 
 _$_UpcomingMoviesResults _$$_UpcomingMoviesResultsFromJson(

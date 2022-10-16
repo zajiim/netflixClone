@@ -5,7 +5,8 @@ import 'package:netflix_bloc/presentation/home/widgets/title_widget.dart';
 
 class TopShowsCardWidget extends StatelessWidget {
   String title;
- final List<String> posterList;
+  final List<String> posterList;
+  
   TopShowsCardWidget({required this.title, required this.posterList, Key? key})
       : super(key: key);
 
@@ -24,7 +25,11 @@ class TopShowsCardWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: List.generate(
               posterList.length,
-              (index) => NumberCardWidget(index: index, imgUrl: posterList[index],),
+              (index) => NumberCardWidget(
+                index: index,
+                
+                imgUrl: posterList[index],
+              ),
             ),
           ),
         ),

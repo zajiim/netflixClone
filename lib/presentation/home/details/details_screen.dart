@@ -1,10 +1,19 @@
 import "package:flutter/material.dart";
 import 'package:netflix_bloc/core/colors/colors.dart';
-import 'package:netflix_bloc/core/constants/strings.dart';
 
 class DetailsScreen extends StatelessWidget {
-  final imgUrl;
-  const DetailsScreen({Key? key, required this.imgUrl}) : super(key: key);
+  final String imgUrl;
+  final String title;
+  final String? overview;
+  final String? releaseDate;
+  final String backdropUrl;
+  const DetailsScreen(
+      {Key? key,
+      required this.imgUrl,
+      required this.title,
+      this.overview,
+      this.releaseDate, required this.backdropUrl})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +26,12 @@ class DetailsScreen extends StatelessWidget {
               children: [
                 Container(
                   height: double.infinity,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                     image: DecorationImage(
                       alignment: Alignment.topCenter,
                       // fit: BoxFit.cover,
                       image: NetworkImage(
-                        'https://www.themoviedb.org/t/p/original/qS2ViQwlWUECiAdkIuEaJZoq0QW.jpg',
+                        backdropUrl,
                       ),
                     ),
                   ),
@@ -50,13 +59,13 @@ class DetailsScreen extends StatelessWidget {
                   top: dimension.height * 0.28,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        "The Batman (2022)",
-                        style: TextStyle(
+                        title,
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      Text("04/03/2022 (IN)"),
+                      Text("$releaseDate (IN)"),
                       Text("Crime, Mystery, Thriller"),
                       Text("2h 57m"),
                     ],
@@ -81,24 +90,25 @@ class DetailsScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   'OverView: ',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Expanded(
                   child: Text(
-                    "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    overview.toString(),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                 ),
               ],
             ),
           ),
-          Spacer()
+          const Spacer()
         ],
       ),
     );

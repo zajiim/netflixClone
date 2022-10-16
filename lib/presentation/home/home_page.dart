@@ -60,26 +60,127 @@ class HomeScreen extends StatelessWidget {
                             style: errorMessageStyle),
                       );
                     }
+//TrendingMoviesSection
                     final trendingMoviesList = state.trendingMoviesList
                         .map(
                             (items) => '$imageAppendUrl${items['poster_path']}')
                         .toList();
+
+                    final trendingMoviesListTitle =
+                        state.trendingMoviesList.map((item) {
+                      return (item['original_title'] != null)
+                          ? item['original_title']
+                          : item['title'];
+                    }).toList();
+                    final trendingMoviesBackdropList = state.trendingMoviesList
+                        .map(
+                            (item) => '$imageAppendUrl${item['backdrop_path']}')
+                        .toList();
+                    final trendingMoviesListOverview = state.trendingMoviesList
+                        .map((item) => item['overview'])
+                        .toList();
+                    final trendingMoviesListReleaseDate = state
+                        .trendingMoviesList
+                        .map((item) => item['release_date'])
+                        .toList();
+
+//NetflixOriginalsSection
                     final netflixOriginalsList = state
                         .trendingMoviesList.reversed
                         .map(
                             (items) => '$imageAppendUrl${items['poster_path']}')
                         .toList();
 
+                    final netflixOriginalsListTitle =
+                        state.trendingMoviesList.reversed.map((item) {
+                      return (item['original_title'] != null)
+                          ? item['original_title']
+                          : item['title'];
+                    }).toList();
+
+                    final netflixOriginalsBackdropList = state
+                        .trendingMoviesList.reversed
+                        .map(
+                            (item) => '$imageAppendUrl${item['backdrop_path']}')
+                        .toList();
+                    final netflixOriginalsListOverview = state
+                        .trendingMoviesList.reversed
+                        .map((item) => item['overview'])
+                        .toList();
+                    final netflixOriginalsListReleaseDate = state
+                        .trendingMoviesList.reversed
+                        .map((item) => item['release_date'])
+                        .toList();
+//UpcomingMoviesSection
                     final upcomingMoviesList = state.upcomingMoviesList
                         .map((item) => '$imageAppendUrl${item['poster_path']}')
                         .toList();
+                    final upcomingMoviesListTitle =
+                        state.upcomingMoviesList.map((item) {
+                      return (item['original_title'] != null)
+                          ? item['original_title']
+                          : item['title'];
+                    }).toList();
+
+                    final upcomingMoviesBackdropList = state.upcomingMoviesList
+                        .map(
+                            (item) => '$imageAppendUrl${item['backdrop_path']}')
+                        .toList();
+                    final upcomingMoviesListOverview = state.upcomingMoviesList
+                        .map((item) => item['overview'])
+                        .toList();
+                    final upcomingMoviesListReleaseDate = state
+                        .upcomingMoviesList
+                        .map((item) => item['release_date'])
+                        .toList();
+//NowplayingMoviesSection
                     final nowPlayingMoviesList = state.nowPlayingShowsList
                         .map((item) => '$imageAppendUrl${item['poster_path']}')
                         .toList();
+                    final nowPlayingMoviesListTitle =
+                        state.nowPlayingShowsList.map((item) {
+                      return (item['original_title'] != null)
+                          ? item['original_title']
+                          : item['title'];
+                    }).toList();
+
+                    final nowplayingShowsBackdropList = state
+                        .nowPlayingShowsList
+                        .map(
+                            (item) => '$imageAppendUrl${item['backdrop_path']}')
+                        .toList();
+                    final nowplayingShowsListOverview = state
+                        .nowPlayingShowsList
+                        .map((item) => item['overview'])
+                        .toList();
+                    final nowplayingShowsListReleaseDate = state
+                        .nowPlayingShowsList
+                        .map((item) => item['release_date'])
+                        .toList();
+
+//AlltimePopularMovies
                     final allTimePopularList = state.popularMoviesList
                         .map((item) => '$imageAppendUrl${item['poster_path']}')
                         .toList();
 
+//PopularMoviesSection
+                    final popularMoviesListTitle =
+                        state.popularMoviesList.map((item) {
+                      return (item['original_title'] != null)
+                          ? item['original_title']
+                          : item['title'];
+                    }).toList();
+                    final popularMoviesBackdropList = state.popularMoviesList
+                        .map(
+                            (item) => '$imageAppendUrl${item['backdrop_path']}')
+                        .toList();
+                    final popularMoviesListOverview = state.popularMoviesList
+                        .map((item) => item['overview'])
+                        .toList();
+                    final popularMoviesListReleaseDate = state.popularMoviesList
+                        .map((item) => item['release_date'])
+                        .toList();
+//PopularPeopleSection
                     final popularPeopleList = state.trendingPeopleList
                         .map((items) =>
                             '$imageAppendUrl${items['profile_path']}')
@@ -98,6 +199,10 @@ class HomeScreen extends StatelessWidget {
                         TitleCardWidget(
                           title: "Released in the past year",
                           posterList: upcomingMoviesList,
+                          titleList: upcomingMoviesListTitle,
+                          backdropList: upcomingMoviesBackdropList,
+                          overviewList: upcomingMoviesListOverview,
+                          releaseDateList: upcomingMoviesListReleaseDate,
                         ),
                         const SizedBox(
                           height: 15,
@@ -110,11 +215,19 @@ class HomeScreen extends StatelessWidget {
                         TitleCardWidget(
                           title: 'Now Playing',
                           posterList: nowPlayingMoviesList,
+                          titleList: nowPlayingMoviesListTitle,
+                          backdropList: nowplayingShowsBackdropList,
+                          overviewList: nowplayingShowsListOverview,
+                          releaseDateList: nowplayingShowsListReleaseDate,
                         ),
                         NetflixOriginalsWidget(
                           width: 250,
                           title: 'Netflix Originals',
                           posterList: netflixOriginalsList,
+                          titleList: netflixOriginalsListTitle,
+                          backdropList: netflixOriginalsBackdropList,
+                          overviewList: netflixOriginalsListOverview,
+                          releaseDateList: netflixOriginalsListReleaseDate,
                         ),
                         const SizedBox(
                           height: 15,
@@ -129,6 +242,10 @@ class HomeScreen extends StatelessWidget {
                         TitleCardWidget(
                           title: 'Trending Now',
                           posterList: upcomingMoviesList,
+                          titleList: upcomingMoviesListTitle,
+                          overviewList: upcomingMoviesListOverview,
+                          releaseDateList: upcomingMoviesListReleaseDate,
+                          backdropList: upcomingMoviesBackdropList,
                         ),
                         const SizedBox(
                           height: 15,
@@ -136,6 +253,10 @@ class HomeScreen extends StatelessWidget {
                         TitleCardWidget(
                           title: 'Most Awaited',
                           posterList: trendingMoviesList,
+                          titleList: trendingMoviesListTitle,
+                          overviewList: trendingMoviesListOverview,
+                          releaseDateList: trendingMoviesListReleaseDate,
+                          backdropList: trendingMoviesBackdropList,
                         ),
                       ],
                     );

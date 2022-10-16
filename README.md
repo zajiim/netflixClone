@@ -4,6 +4,7 @@ Netflix clone made with flutter framework, BLoC as state management and DDD as d
 ## Screenshots 
 <p float="left">
     <img src="https://github.com/zajiim/netflixClone/blob/main/screenshots/HomePage.jpg" width="140" height="300" />
+    <img src="https://github.com/zajiim/netflixClone/blob/main/screenshots/DetailsScreen.jpg" width="140" height="300" />
     <img src="https://github.com/zajiim/netflixClone/blob/main/screenshots/ComingSoon.jpg" width="140" height="300" />
     <img src="https://github.com/zajiim/netflixClone/blob/main/screenshots/EveryonesWatching.jpg" width="140" height="300" />
     <img src="https://github.com/zajiim/netflixClone/blob/main/screenshots/Search.jpg" width="140" height="300" />

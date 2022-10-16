@@ -2,9 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:netflix_bloc/presentation/home/details/details_screen.dart';
 
 class MainCardWidget extends StatelessWidget {
-  String imgUrl;
+  final String imgUrl;
+  final String overview;
+  final String backdropUrl;
   double width;
-  MainCardWidget({this.width = 150, required this.imgUrl, Key? key})
+  final String? releaseDate;
+  final String title;
+  MainCardWidget(
+      {this.width = 150,
+      required this.imgUrl,
+      Key? key,
+      required this.title,
+      required this.overview,
+      this.releaseDate, required this.backdropUrl})
       : super(key: key);
 
   @override
@@ -16,7 +26,11 @@ class MainCardWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetailsScreen(
+              releaseDate: releaseDate,
+              overview: overview,
               imgUrl: imgUrl,
+              title: title.toString(),
+              backdropUrl: backdropUrl,
             ),
           ),
         ),

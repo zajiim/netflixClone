@@ -13,10 +13,14 @@ class HomeScreenData with _$HomeScreenData {
       _$HomeScreenDataFromJson(json);
 }
 
+
+
 @freezed
 class PopularMoviesResults with _$PopularMoviesResults {
   const factory PopularMoviesResults({
     @JsonKey(name: "poster_path") required String? posterPath,
+    required String? overview,
+    @JsonKey(name: "backdrop_path") required String? backdropPath,
   }) = _PopularMoviesResults;
 
   factory PopularMoviesResults.fromJson(Map<String, dynamic> json) =>
