@@ -8,10 +8,10 @@ class NetflixOriginalsWidget extends StatelessWidget {
   final double width;
   final String? releaseDate;
   final String? overview;
-  final List<dynamic?> titleList;
-  final List<dynamic?> backdropList;
-  final List<dynamic?> overviewList;
-  final List<dynamic?> releaseDateList;
+  final List<dynamic>? titleList;
+  final List<dynamic>? backdropList;
+  final List<dynamic>? overviewList;
+  final List<dynamic>? releaseDateList;
 
   const NetflixOriginalsWidget({
     required this.title,
@@ -44,10 +44,10 @@ class NetflixOriginalsWidget extends StatelessWidget {
               children: List.generate(
                 posterList.length,
                 (index) => MainCardWidget(
-                  backdropUrl: backdropList[index],
-                  overview: overviewList[index],
-                  releaseDate: releaseDateList[index],
-                  title: titleList[index],
+                  backdropUrl: backdropList![index],
+                  overview: overviewList![index],
+                  releaseDate: releaseDateList?[index],
+                  title: titleList?[index],
                   width: width,
                   imgUrl: posterList[index],
                 ),

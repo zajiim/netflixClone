@@ -18,6 +18,7 @@ import 'widgets/popular_people_card_widget.dart';
 
 Random random = Random();
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   ValueNotifier<bool> scrollDirectionNotifier = ValueNotifier(true);
@@ -66,12 +67,18 @@ class HomeScreen extends StatelessWidget {
                             (items) => '$imageAppendUrl${items['poster_path']}')
                         .toList();
 
-                    final trendingMoviesListTitle =
+final trendingMoviesListTitle =
                         state.trendingMoviesList.map((item) {
-                      return (item['original_title'] != null)
-                          ? item['original_title']
-                          : item['title'];
+                      return (item['original_title'] == null)
+                          ? "Error while fetching data"
+                          : item['original_title'];
                     }).toList();
+                    // final trendingMoviesListTitle =
+                    //     state.trendingMoviesList.map((item) {
+                    //   return (item['original_title'] != null)
+                    //       ? item['original_title']
+                    //       : item['title'];
+                    // }).toList();
                     final trendingMoviesBackdropList = state.trendingMoviesList
                         .map(
                             (item) => '$imageAppendUrl${item['backdrop_path']}')
@@ -79,10 +86,17 @@ class HomeScreen extends StatelessWidget {
                     final trendingMoviesListOverview = state.trendingMoviesList
                         .map((item) => item['overview'])
                         .toList();
-                    final trendingMoviesListReleaseDate = state
-                        .trendingMoviesList
-                        .map((item) => item['release_date'])
-                        .toList();
+
+                        final trendingMoviesListReleaseDate =
+                        state.trendingMoviesList.map((item) {
+                      return (item['release_date'] == null)
+                          ? "Error while fetching data"
+                          : item['release_date'];
+                    }).toList();
+                    // final trendingMoviesListReleaseDate = state
+                    //     .trendingMoviesList
+                    //     .map((item) => item['release_date'])
+                    //     .toList();
 
 //NetflixOriginalsSection
                     final netflixOriginalsList = state
@@ -93,10 +107,14 @@ class HomeScreen extends StatelessWidget {
 
                     final netflixOriginalsListTitle =
                         state.trendingMoviesList.reversed.map((item) {
-                      return (item['original_title'] != null)
-                          ? item['original_title']
-                          : item['title'];
+                      return (item['original_title'] == null)
+                          ? "Error while fetching data"
+                          : item['original_title'];
                     }).toList();
+                    // final netflixOriginalsListTitle =
+                    //     (state.trendingMoviesList.reversed)
+                    //         .map((item) => item['title'])
+                    //         .toList();
 
                     final netflixOriginalsBackdropList = state
                         .trendingMoviesList.reversed
@@ -107,10 +125,18 @@ class HomeScreen extends StatelessWidget {
                         .trendingMoviesList.reversed
                         .map((item) => item['overview'])
                         .toList();
-                    final netflixOriginalsListReleaseDate = state
-                        .trendingMoviesList.reversed
-                        .map((item) => item['release_date'])
-                        .toList();
+
+                    final netflixOriginalsListReleaseDate =
+                        state.trendingMoviesList.reversed.map((item) {
+                      return (item['release_date'] == null)
+                          ? "Error while fetching data"
+                          : item['release_date'];
+                    }).toList();
+                    // final netflixOriginalsListReleaseDate = state
+                    //     .trendingMoviesList.reversed
+                    //     .map((item) => item['release_date'])
+                    //     .toList();
+
 //UpcomingMoviesSection
                     final upcomingMoviesList = state.upcomingMoviesList
                         .map((item) => '$imageAppendUrl${item['poster_path']}')
@@ -164,22 +190,22 @@ class HomeScreen extends StatelessWidget {
                         .toList();
 
 //PopularMoviesSection
-                    final popularMoviesListTitle =
-                        state.popularMoviesList.map((item) {
-                      return (item['original_title'] != null)
-                          ? item['original_title']
-                          : item['title'];
-                    }).toList();
-                    final popularMoviesBackdropList = state.popularMoviesList
-                        .map(
-                            (item) => '$imageAppendUrl${item['backdrop_path']}')
-                        .toList();
-                    final popularMoviesListOverview = state.popularMoviesList
-                        .map((item) => item['overview'])
-                        .toList();
-                    final popularMoviesListReleaseDate = state.popularMoviesList
-                        .map((item) => item['release_date'])
-                        .toList();
+                    // final popularMoviesListTitle =
+                    //     state.popularMoviesList.map((item) {
+                    //   return (item['original_title'] != null)
+                    //       ? item['original_title']
+                    //       : item['title'];
+                    // }).toList();
+                    // final popularMoviesBackdropList = state.popularMoviesList
+                    //     .map(
+                    //         (item) => '$imageAppendUrl${item['backdrop_path']}')
+                    //     .toList();
+                    // final popularMoviesListOverview = state.popularMoviesList
+                    //     .map((item) => item['overview'])
+                    //     .toList();
+                    // final popularMoviesListReleaseDate = state.popularMoviesList
+                    //     .map((item) => item['release_date'])
+                    //     .toList();
 //PopularPeopleSection
                     final popularPeopleList = state.trendingPeopleList
                         .map((items) =>
